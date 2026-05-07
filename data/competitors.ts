@@ -1,0 +1,458 @@
+export type CompetitorCategory =
+  | "手机 AI Agent"
+  | "浏览器/电脑 AI Agent"
+  | "远控/RPA/传统自动化";
+
+export type PricingModel = "开源/免费" | "订阅" | "按量" | "企业定制" | "一次性购买";
+
+export type Competitor = {
+  name: string;
+  category: CompetitorCategory;
+  origin: "国内" | "国外";
+  platform: string;
+  layer: "直接竞品" | "相邻竞品" | "替代方案" | "基础设施";
+  maturity: "研究/开源" | "早期产品" | "商业化" | "成熟企业";
+  pricingModel: PricingModel;
+  pricing: string;
+  pricingDetails: {
+    type: string;
+    price: string;
+    note: string;
+  };
+  productSummary: string;
+  capabilityDescription: string[];
+  technicalSolution: string[];
+  coreFunctionDescription: string[];
+  activityEvidence: string;
+  workflowModel: string;
+  workflowSteps: string[];
+  coreCapabilities: string[];
+  strengths: string[];
+  weaknesses: string[];
+  fitAgainstHaomai: string;
+  scores: {
+    mobileControl: number;
+    browserControl: number;
+    desktopControl: number;
+    aiAutonomy: number;
+    productization: number;
+    enterpriseReady: number;
+  };
+  sources: { label: string; url: string }[];
+  lastChecked: string;
+};
+
+export const reportDate = "2026-05-07";
+
+export const competitors: Competitor[] = [
+  {
+    name: "DroidRun / Mobilerun",
+    category: "手机 AI Agent",
+    origin: "国外",
+    platform: "Android 手机、iOS 方向；云手机、模拟器、个人手机",
+    layer: "直接竞品",
+    maturity: "早期产品",
+    pricingModel: "开源/免费",
+    pricing: "框架开源；Cloud 为 waitlist/早期访问，公开页面未给正式价格。",
+    pricingDetails: { type: "框架开源 + 云服务待定", price: "开源免费；Cloud 未公开正式价格", note: "适合开发者自建，商业云成本需要等官方公布。" },
+    productSummary: "Mobilerun 可以理解成“给 AI 用的手机机房”。它提供真实手机、云手机或模拟器，让 AI 像人一样看手机屏幕、点击、滑动、输入、安装 App，然后完成一段手机任务。",
+    capabilityDescription: ["给 AI 分配一台可操作的手机，可以是临时模拟器、个人手机或云端托管手机", "让 AI 执行移动 App 任务，例如测试登录流程、采集公开信息、批量检查页面状态", "保留每一步操作记录，方便开发者复盘 AI 为什么点了某个按钮、哪里失败了"],
+    technicalSolution: ["设备层：提供 Android/iOS 方向的手机资源，包括模拟器、云手机和个人设备接入", "控制层：读取屏幕截图和界面结构，再把 AI 的决策转成点击、输入、滑动等手机动作", "智能层：接入 OpenAI、Anthropic、Gemini 等大模型，让模型负责观察屏幕、规划下一步、循环执行"],
+    coreFunctionDescription: ["真实手机控制：AI 不是只读网页，而是真的能操作手机里的 App", "多模型接入：同一套手机控制能力可以换不同大模型来驱动", "开发者接口：开发者可以用命令行或 Python 代码把手机自动化接到自己的系统里", "云端设备池：不用自己摆一堆实体手机，也可以同时跑多台设备", "账号与凭证管理：把登录账号放进受控环境，减少手工输入和泄露风险"],
+    activityEvidence: "官方 GitHub 近两年持续发版，公开 release 显示 2026-04 有 v0.5.x 更新。",
+    workflowModel: "自然语言目标 -> 截图/可访问性树观察 -> LLM 规划 -> 点击、输入、滑动 -> 轨迹追踪。",
+    workflowSteps: ["输入自然语言目标", "读取截图和可访问性树", "LLM 生成下一步动作", "执行点击、输入、滑动", "记录轨迹并支持复盘"],
+    coreCapabilities: ["真实手机 App 控制", "多 LLM 支持", "CLI/Python SDK", "云端并发设备规划", "凭证管理"],
+    strengths: ["开发者上手路径完整", "方向非常贴近手机 AI 执行", "同时支持真机、云手机和移动数据采集"],
+    weaknesses: ["商业版价格还没公开", "产品仍偏开发者工具", "普通运营人员需要的模板和报表还不够"],
+    fitAgainstHaomai: "最直接的技术竞品。好麦应避开纯 SDK 叙事，强调中文增长任务、手机端产品体验和执行报告。",
+    scores: { mobileControl: 96, browserControl: 22, desktopControl: 10, aiAutonomy: 86, productization: 58, enterpriseReady: 52 },
+    sources: [{ label: "官网", url: "https://mobilerun.ai/" }, { label: "官方文档", url: "https://docs.mobilerun.ai/framework/overview" }, { label: "官方 GitHub", url: "https://github.com/droidrun/mobilerun" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "Open-AutoGLM / AutoGLM-Phone-9B",
+    category: "手机 AI Agent",
+    origin: "国内",
+    platform: "Android 手机、鸿蒙手机；模型服务或本地部署环境",
+    layer: "直接竞品",
+    maturity: "研究/开源",
+    pricingModel: "开源/免费",
+    pricing: "代码与模型开源；成本主要来自模型调用或本地算力。",
+    pricingDetails: { type: "代码/模型开源", price: "软件免费；模型调用或本地算力成本自理", note: "更像技术底座，不是面向普通用户的一站式订阅。" },
+    productSummary: "Open-AutoGLM 是智谱开源的手机操作 AI。它的重点不是做一个完整 SaaS，而是证明 AI 可以看懂中文手机界面，并自动规划点击、输入、滑动等操作。",
+    capabilityDescription: ["用户用中文描述任务，模型理解当前手机屏幕，并给出下一步操作", "通过调试通道控制 Android 或鸿蒙设备，完成点击、滑动、输入等动作", "遇到登录、验证码、支付等敏感步骤时停下来，让人确认或接管"],
+    technicalSolution: ["理解层：用多模态模型同时理解中文指令和手机截图", "执行层：通过 ADB 或 HDC 这类设备调试通道，把模型决策下发到手机", "安全层：在不确定或高风险步骤加入人工确认，避免 AI 直接越权操作"],
+    coreFunctionDescription: ["中文手机理解：更适合中文指令和国内 App 界面", "手机动作执行：把模型判断转成真实手机上的点击、滑动、输入", "敏感操作确认：高风险步骤不会默认自动执行", "人工接管：模型卡住时可以让人继续操作", "可自部署：有技术团队可以自己部署模型和执行环境"],
+    activityEvidence: "AutoGLM-Phone-9B 模型卡在 2025-12 发布，Hugging Face commit history 显示 2026-01 仍有 README 更新。",
+    workflowModel: "中文自然语言 -> 手机屏幕多模态理解 -> 动作序列规划 -> ADB/HDC 执行 -> 敏感动作确认。",
+    workflowSteps: ["输入中文任务", "理解手机屏幕图像", "规划动作序列", "通过 ADB/HDC 执行", "登录、验证码、敏感操作交给人工确认"],
+    coreCapabilities: ["中文手机 Agent", "ADB/HDC 控制", "敏感操作确认", "登录/验证码人工兜底", "本地/服务端部署"],
+    strengths: ["中文和本地 App 语境强", "开源可验证", "有安全确认和人机协作设计"],
+    weaknesses: ["更像技术底座，不是完整商业产品", "部署门槛高", "稳定性受模型、设备和网络环境影响"],
+    fitAgainstHaomai: "证明中文手机 Agent 需求成立。好麦可把开源能力产品化，主打低门槛任务模板和可控执行。",
+    scores: { mobileControl: 92, browserControl: 20, desktopControl: 8, aiAutonomy: 82, productization: 45, enterpriseReady: 40 },
+    sources: [{ label: "官方博客", url: "https://autoglm.z.ai/blog" }, { label: "官方 GitHub", url: "https://github.com/zai-org/Open-AutoGLM" }, { label: "官方模型 Hugging Face", url: "https://huggingface.co/zai-org/AutoGLM-Phone-9B" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "ChatGPT agent / Operator",
+    category: "浏览器/电脑 AI Agent",
+    origin: "国外",
+    platform: "ChatGPT 里的虚拟电脑、浏览器、代码环境和外部应用连接器",
+    layer: "相邻竞品",
+    maturity: "商业化",
+    pricingModel: "订阅",
+    pricing: "包含在 ChatGPT 订阅权益中；不同套餐每月可用次数不同。",
+    pricingDetails: { type: "ChatGPT 订阅额度", price: "Plus 40 条/月；Pro 400 条/月；Business/Enterprise 40 条/月或弹性计费", note: "购买的是通用 Agent 能力，不是手机真机控制。" },
+    productSummary: "ChatGPT agent / Operator 可以理解成“会自己用浏览器和电脑工具的 ChatGPT”。用户说一个目标，它会打开网页、查资料、填写表单、整理文件，并在需要时请求确认。",
+    capabilityDescription: ["替用户浏览网页、查资料、比较信息，并整理成报告或表格", "在虚拟电脑里使用浏览器、代码、文件和连接器完成多步骤任务", "遇到登录、购买、发送消息等敏感动作时，先让用户确认"],
+    technicalSolution: ["理解层：读取网页内容、屏幕状态和工具返回结果", "执行层：在隔离的虚拟电脑、浏览器和代码环境里完成任务", "安全层：通过确认、暂停和接管机制限制高风险动作"],
+    coreFunctionDescription: ["网页操作：能打开网页、阅读内容、点击按钮和填写表单", "资料研究：把搜索、阅读、对比和总结串成完整流程", "代码执行：需要计算或处理数据时，可以调用代码环境", "文件产出：把结果整理成表格、文档或演示材料", "连接器读取：在授权后读取外部应用里的相关信息"],
+    activityEvidence: "OpenAI 于 2025-07-17 发布 ChatGPT agent，帮助中心更新日志在 2025-08 扩展到 Enterprise/Edu。",
+    workflowModel: "用户目标 -> 虚拟电脑 -> 浏览器/终端/连接器 -> 需授权动作确认 -> 可中断和接管。",
+    workflowSteps: ["输入任务目标", "Agent 打开虚拟电脑", "调用浏览器、终端或连接器", "遇到敏感动作请求确认", "用户可随时中断或接管"],
+    coreCapabilities: ["网页操作", "研究报告", "代码执行", "表格/幻灯片产出", "连接器读取"],
+    strengths: ["通用智能强", "报告和资料综合能力强", "用户认知领先"],
+    weaknesses: ["不能直接控制用户自己的手机 App", "购物、登录、发送等高风险动作限制较多", "每月可用次数和执行环境都有边界"],
+    fitAgainstHaomai: "不是手机直接竞品，但会教育市场。好麦可占据“真实手机 App 执行”空位。",
+    scores: { mobileControl: 8, browserControl: 90, desktopControl: 76, aiAutonomy: 92, productization: 92, enterpriseReady: 80 },
+    sources: [{ label: "ChatGPT agent 官方发布", url: "https://openai.com/index/introducing-chatgpt-agent/" }, { label: "Operator 官方发布", url: "https://openai.com/index/introducing-operator/" }, { label: "官方帮助中心", url: "https://help.openai.com/en/articles/11752874-chatgpt-agent" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "Claude Computer Use",
+    category: "浏览器/电脑 AI Agent",
+    origin: "国外",
+    platform: "开发者接口；虚拟机、容器或远程桌面环境",
+    layer: "基础设施",
+    maturity: "商业化",
+    pricingModel: "按量",
+    pricing: "按 Claude 模型调用量计费；截图和工具调用会增加成本。",
+    pricingDetails: { type: "模型调用按量", price: "按 Claude 模型 token 计费", note: "截图和工具调用会增加模型消耗；执行环境需要开发者自己搭。" },
+    productSummary: "Claude Computer Use 是 Anthropic 给开发者的“电脑操作能力”。它让 Claude 看一张电脑截图，然后决定下一步要移动鼠标、点击、输入还是滚动。它不是现成 App，而是做桌面 Agent 的底层能力。",
+    capabilityDescription: ["让模型看桌面截图，判断当前界面发生了什么", "让模型请求鼠标、键盘、滚动、文件编辑或命令行操作", "给开发者提供如何隔离环境、保护凭证、加入人工确认的安全建议"],
+    technicalSolution: ["理解层：Claude 根据截图判断界面状态", "执行层：开发者自己的程序负责真正移动鼠标、点击、输入或运行命令", "环境层：通常放在容器、虚拟机或远程桌面中，避免模型直接碰到真实电脑"],
+    coreFunctionDescription: ["截图理解：模型通过屏幕截图判断下一步该做什么", "鼠标键盘操作：把模型建议变成移动、点击、输入和滚动", "命令行配合：需要处理文件或运行命令时，可以和终端工具配合", "开发者样例：提供搭建电脑操作环境的参考实现", "安全边界：强调沙箱、权限控制和高风险动作确认"],
+    activityEvidence: "Anthropic 官方文档仍标注 computer-use beta，并使用 2025-01-24 beta header 口径。",
+    workflowModel: "Claude 请求截图、鼠标、键盘、滚动等 tool_use，开发者负责执行动作并回传结果。",
+    workflowSteps: ["开发者提供桌面/容器环境", "Claude 请求截图观察", "模型返回鼠标/键盘/滚动工具调用", "宿主程序执行动作", "回传结果继续循环"],
+    coreCapabilities: ["桌面截图理解", "鼠标键盘控制", "bash/text editor 组合", "开发者参考实现", "安全隔离建议"],
+    strengths: ["开发者可嵌入", "桌面级泛化强", "安全文档完善"],
+    weaknesses: ["不是普通用户能直接使用的产品", "远程操作可能有延迟或点错位置", "需要开发者自己搭执行环境"],
+    fitAgainstHaomai: "可作为底层能力参考。好麦若自研手机执行层，需要同等级的隔离、确认和日志机制。",
+    scores: { mobileControl: 12, browserControl: 82, desktopControl: 88, aiAutonomy: 84, productization: 54, enterpriseReady: 74 },
+    sources: [{ label: "官方文档", url: "https://docs.anthropic.com/en/docs/build-with-claude/computer-use" }, { label: "Anthropic 官网", url: "https://www.anthropic.com/" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "Browser Use Cloud",
+    category: "浏览器/电脑 AI Agent",
+    origin: "国外",
+    platform: "云端浏览器、开发者接口",
+    layer: "基础设施",
+    maturity: "商业化",
+    pricingModel: "按量",
+    pricing: "AI Agent Task $0.01 初始化 + 按 step；Browser Session $0.06/小时；Skill Creation $2/skill；Proxy $10/GB。",
+    pricingDetails: { type: "云浏览器按量计费", price: "Task $0.01 初始化 + 按 step；Session $0.06/小时；Skill $2/个；Proxy $10/GB", note: "适合开发者试错，成本随步骤数、会话时长和代理流量增长。" },
+    productSummary: "Browser Use Cloud 是“给 AI 用的云浏览器”。开发者不用自己维护浏览器环境，只要发起一个任务，AI 就能在云端打开网页、点击、输入、提取信息。",
+    capabilityDescription: ["创建云端浏览器，让 AI 自动执行网页任务", "把常用网页流程保存下来，下次重复执行", "适合批量网页检查、数据采集、表单填写和后台操作"],
+    technicalSolution: ["浏览器层：提供云端浏览器、会话管理和代理网络", "执行层：AI 读取网页状态，并一步步点击、输入、提取或验证结果", "复用层：把稳定流程保存为 skill，也就是可重复调用的网页操作能力"],
+    coreFunctionDescription: ["网页任务执行：把目标变成打开网页、点击、输入、提取信息的步骤", "云浏览器：开发者不用自己搭浏览器和运行环境", "流程复用：把常见任务保存下来重复跑", "代理支持：需要不同网络环境时可以接入代理", "接口接入：可以把这套网页操作能力接进自己的产品"],
+    activityEvidence: "browser-use/browser-use GitHub 在 2026-04 仍有 release 和代码更新。",
+    workflowModel: "API 创建浏览器会话，Agent 观察页面并按 step 执行，可封装为 skill 复用。",
+    workflowSteps: ["通过 API 创建浏览器会话", "Agent 观察网页状态", "按 step 执行点击/输入/提取", "把稳定流程封装为 skill", "按任务、会话和代理资源计费"],
+    coreCapabilities: ["AI 浏览器任务", "云浏览器会话", "Skill 创建/执行", "代理流量", "API 化"],
+    strengths: ["开发者集成清晰", "按量适合试错", "浏览器基础设施成熟"],
+    weaknesses: ["不覆盖手机 App", "复杂登录和风控场景仍需要人工兜底", "任务步骤越多，成本越高"],
+    fitAgainstHaomai: "相邻基础设施。好麦可学习其按量计费与 skill 化，但需把执行载体换成手机。",
+    scores: { mobileControl: 0, browserControl: 92, desktopControl: 40, aiAutonomy: 82, productization: 70, enterpriseReady: 62 },
+    sources: [{ label: "官网", url: "https://browser-use.com/" }, { label: "Cloud 官方文档", url: "https://docs.browser-use.com/cloud/quickstart" }, { label: "官方定价", url: "https://browser-use.com/pricing" }, { label: "官方 GitHub", url: "https://github.com/browser-use/browser-use" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "Skyvern",
+    category: "浏览器/电脑 AI Agent",
+    origin: "国外",
+    platform: "云端浏览器、开发者接口、工作流",
+    layer: "相邻竞品",
+    maturity: "商业化",
+    pricingModel: "订阅",
+    pricing: "Free 1,000 credits；Hobby $29/月；Pro $149/月；Enterprise custom。",
+    pricingDetails: { type: "分层订阅 + Credits", price: "Free 1,000 credits；Hobby $29/月；Pro $149/月；Enterprise custom", note: "面向浏览器工作流，企业版包含自托管和更强治理。" },
+    productSummary: "Skyvern 是一个更偏生产环境的网页自动化工具。它的目标是让 AI 去处理真实网页流程，比如填表、登录、采购、数据录入和后台操作。",
+    capabilityDescription: ["自动填写网页表单、抓取数据、处理重复后台流程", "处理登录、验证码、两步验证和账号凭证这类真实网页问题", "任务完成后把结果发回外部系统，方便接入业务流程"],
+    technicalSolution: ["执行层：用浏览器自动化框架完成点击、输入、跳转和提取", "智能层：当网页结构变化或按钮位置变化时，用 AI 做语义判断", "企业层：提供凭证、验证码、团队协作、自托管和结果回传能力"],
+    coreFunctionDescription: ["网页流程自动化：处理真实后台里的填表、录入和提取", "登录验证处理：覆盖验证码和两步验证等常见阻碍", "团队协作：多人共享任务、凭证和执行记录", "结果回传：任务完成后把结果发回业务系统", "企业部署：对安全和数据有要求的团队可以选择自托管"],
+    activityEvidence: "Skyvern 官方 GitHub release 显示 2026-04-14 发布 v1.0.31。",
+    workflowModel: "AI + Playwright 浏览器自动化，支持 CAPTCHA、2FA/TOTP、凭证管理和工作流。",
+    workflowSteps: ["创建浏览器工作流", "AI 与 Playwright 协同执行", "处理表单、登录和页面变化", "支持 CAPTCHA/2FA/TOTP", "通过 webhook 或 API 输出结果"],
+    coreCapabilities: ["浏览器自动化", "CAPTCHA/2FA 支持", "团队工作区", "Webhooks", "自托管企业方案"],
+    strengths: ["定价透明", "反机器人/凭证场景考虑较多", "面向生产工作流"],
+    weaknesses: ["仅浏览器", "复杂 App 内任务不覆盖", "移动端增长任务需要另建执行层"],
+    fitAgainstHaomai: "在“商业化浏览器 Agent”上较成熟，可作为好麦定价和企业能力对照。",
+    scores: { mobileControl: 0, browserControl: 94, desktopControl: 36, aiAutonomy: 78, productization: 76, enterpriseReady: 78 },
+    sources: [{ label: "官网", url: "https://www.skyvern.com/" }, { label: "官方定价", url: "https://www.skyvern.com/pricing/" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "Manus",
+    category: "浏览器/电脑 AI Agent",
+    origin: "国内",
+    platform: "云端通用 Agent",
+    layer: "相邻竞品",
+    maturity: "商业化",
+    pricingModel: "订阅",
+    pricing: "官方帮助中心公开会员/积分制信息；具体权益以账号所在地区页面为准。",
+    pricingDetails: { type: "会员/积分制", price: "公开帮助中心说明会员机制；具体价格按地区和账号页面为准", note: "权益口径需要以登录后的官方页面核验。" },
+    productSummary: "Manus 更像一个“云端办事助理”。用户把一个任务交给它，比如调研、整理资料、做表格，它会自己拆步骤、查网页、处理文件，最后交付结果。",
+    capabilityDescription: ["用户只要描述目标，Manus 负责把大任务拆成小步骤", "适合做资料调研、信息整理、旅行规划、招聘搜索等任务", "任务可以在云端继续跑，用户不需要一直盯着浏览器"],
+    technicalSolution: ["任务层：把用户目标拆成计划和子任务", "工具层：调用网页浏览、文件处理和数据整理工具", "产品层：底层执行细节公开较少，更像封闭的云端任务平台"],
+    coreFunctionDescription: ["任务拆解：把一句目标拆成可执行步骤", "网页研究：自动搜索、阅读和整理网页信息", "结果产出：把过程整理成报告、表格或结论", "云端执行：任务可以在后台继续推进", "多工具组合：把网页、文件和数据处理串在一起"],
+    activityEvidence: "Manus 帮助中心价格页近期更新，官方博客发布 Manus 1.6，仍处活跃迭代。",
+    workflowModel: "通用任务委托，Agent 在云端执行研究、网页任务、文件产出等。",
+    workflowSteps: ["用户提交通用任务", "Agent 在云端拆解计划", "调用网页和文件工具", "异步推进任务", "交付研究或文件结果"],
+    coreCapabilities: ["通用 Agent", "网页研究", "任务产出", "异步执行", "多工具工作流"],
+    strengths: ["市场声量高", "面向非技术用户", "任务委托心智强"],
+    weaknesses: ["公开技术边界不如开发者工具清晰", "手机真机控制不是主能力", "价格和权益需按地区核验"],
+    fitAgainstHaomai: "用户心智竞品。好麦需要更聚焦地证明“手机 App 上的可执行结果”。",
+    scores: { mobileControl: 8, browserControl: 78, desktopControl: 64, aiAutonomy: 84, productization: 82, enterpriseReady: 58 },
+    sources: [{ label: "官网", url: "https://manus.im/" }, { label: "官方定价说明", url: "https://help.manus.im/en/articles/11711111-what-is-the-current-membership-pricing-for-manus" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "Vector AI Agent",
+    category: "浏览器/电脑 AI Agent",
+    origin: "国外",
+    platform: "Windows 电脑；Chrome 或 Edge 浏览器",
+    layer: "替代方案",
+    maturity: "早期产品",
+    pricingModel: "开源/免费",
+    pricing: "官网称软件永久免费；用户自己承担模型调用成本。",
+    pricingDetails: { type: "软件免费 + 自带模型", price: "软件免费；模型调用费用自理", note: "免费门槛低，但成本和安全责任转移给用户。" },
+    productSummary: "Vector AI Agent 是一个 Windows 本地浏览器自动化工具。它让用户用一句话指挥 Chrome 或 Edge 浏览器，重点场景是多账号浏览器、钱包插件和营销类重复任务。它的信息透明度弱于主流厂商，需要持续核验。",
+    capabilityDescription: ["在用户自己的 Windows 电脑上控制 Chrome 或 Edge", "同时管理多个浏览器身份，适合多账号网页任务", "可操作浏览器钱包插件，但这类场景合规风险更高"],
+    technicalSolution: ["运行层：安装在 Windows 本地，不是云服务", "控制层：连接 Chrome/Edge 浏览器和不同账号环境", "模型层：用户自己配置大模型接口，工具负责把指令转成浏览器动作"],
+    coreFunctionDescription: ["本地浏览器操作：在自己的电脑上执行网页动作", "多账号环境：为不同账号保留独立浏览器状态", "主流浏览器支持：围绕 Chrome 和 Edge 执行任务", "钱包插件操作：可覆盖浏览器插件交互，但需要谨慎评估风险", "自带模型接口：用户自己承担模型配置和调用成本"],
+    activityEvidence: "官网下载页显示 Windows 安装包 v1.3.4，并标注 Vector Brain v1.4 更新计划，页面版权为 2026。",
+    workflowModel: "本地 Windows 软件 -> 自然语言命令 -> 控制多个 Chrome/Edge profile 和钱包插件。",
+    workflowSteps: ["安装 Windows 本地软件", "配置模型接口", "选择浏览器账号环境", "输入自然语言浏览器任务", "控制页面和插件完成操作"],
+    coreCapabilities: ["本地浏览器控制", "多账号环境", "Chrome/Edge", "钱包自动化", "自带模型接口"],
+    strengths: ["免费、本地运行、浏览器多账号定位鲜明", "适合需要大量浏览器环境的重复网页任务"],
+    weaknesses: ["Windows only", "官网营销承诺较激进", "企业合规和安全可信度需谨慎评估"],
+    fitAgainstHaomai: "提醒好麦避免被浏览器多开工具带偏；手机真机与合规增长任务更适合作为差异化。",
+    scores: { mobileControl: 0, browserControl: 82, desktopControl: 42, aiAutonomy: 70, productization: 62, enterpriseReady: 28 },
+    sources: [{ label: "官网", url: "https://vectoragent.io/" }, { label: "官方定价", url: "https://vectoragent.io/pricing/" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "UiPath",
+    category: "远控/RPA/传统自动化",
+    origin: "国外",
+    platform: "企业流程自动化、AI 自动化、云端管理平台",
+    layer: "替代方案",
+    maturity: "成熟企业",
+    pricingModel: "企业定制",
+    pricing: "Basic 起价 $25/月；Standard/Enterprise 联系销售。",
+    pricingDetails: { type: "企业自动化平台", price: "Basic 起价 $25/月；Standard/Enterprise 联系销售", note: "价格取决于机器人数量、平台模块、安全治理和企业部署范围。" },
+    productSummary: "UiPath 是大企业用的自动化平台。它不只是录制点击动作，还覆盖流程发现、机器人执行、文档处理、人工审批、监控和审计。",
+    capabilityDescription: ["找出企业里哪些流程适合自动化，例如财务、人事、客服和运营流程", "让机器人跨系统处理表单、文件、审批和后台操作", "为大公司提供权限、日志、队列、审计和监控能力"],
+    technicalSolution: ["发现层：分析员工和系统流程，找自动化机会", "执行层：用机器人、AI、系统连接器和界面自动化完成流程", "治理层：统一管理任务队列、机器人、权限、异常和审计记录"],
+    coreFunctionDescription: ["企业流程自动化：让机器人执行跨系统的重复业务流程", "AI 自动化：把 AI 判断、人工审批和传统自动化编排在一起", "流程编排：统一管理任务、队列、机器人和异常", "文档处理：从票据、表单、合同中提取和校验信息", "治理审计：满足大企业对安全、合规和可追溯的要求"],
+    activityEvidence: "UiPath 官方定价页 2026 年仍在更新，已突出 Agentic Automation 和 Agents 权益。",
+    workflowModel: "企业流程发现 -> bot/agent 编排 -> 人机协作 -> 治理与审计。",
+    workflowSteps: ["发现和评估企业流程", "设计 bot/agent 自动化", "接入文档处理和系统连接器", "设置人机协作节点", "用治理、审计和监控上线"],
+    coreCapabilities: ["企业 RPA", "Agentic Automation", "流程编排", "文档处理", "治理审计"],
+    strengths: ["企业级能力完整", "流程治理强", "RPA 市场认知高"],
+    weaknesses: ["部署和销售周期重", "手机消费者 App 场景不是优势", "对初创产品构成的是企业预算对比压力"],
+    fitAgainstHaomai: "高端企业自动化参照。好麦应做轻量、移动、场景化，不和 UiPath 正面拼大企业流程平台。",
+    scores: { mobileControl: 2, browserControl: 62, desktopControl: 88, aiAutonomy: 46, productization: 82, enterpriseReady: 96 },
+    sources: [{ label: "官网", url: "https://www.uipath.com/" }, { label: "官方定价", url: "https://www.uipath.com/pricing" }],
+    lastChecked: reportDate
+  }
+];
+
+export const traditionalAutomationCompetitors: Competitor[] = [
+  {
+    name: "Tasker",
+    category: "手机 AI Agent",
+    origin: "国外",
+    platform: "Android",
+    layer: "替代方案",
+    maturity: "成熟企业",
+    pricingModel: "一次性购买",
+    pricing: "Google Play 付费下载，常见价格约 $3-$4，随地区变化。",
+    pricingDetails: { type: "一次性买断", price: "约 $3-$4，随地区变化", note: "价格低，但用户需要自己配置规则和插件。" },
+    productSummary: "Tasker 是 Android 上的老牌自动化工具。它不靠 AI 理解任务，而是让用户自己设置规则：什么时候触发、做什么动作、调用哪个插件。",
+    capabilityDescription: ["按时间、地点、通知、App 状态等条件自动触发任务", "自动改手机设置、打开 App、发消息、请求网络接口或运行脚本", "通过插件连接更多能力，例如智能家居、文件处理、通知和网页请求"],
+    technicalSolution: ["规则层：用户手工配置触发条件、动作和变量", "执行层：依赖 Android 权限、无障碍服务、插件和本地脚本", "智能层：没有 AI 规划，适合固定规则，不适合一句话描述目标后自动完成"],
+    coreFunctionDescription: ["系统自动化：根据手机状态自动执行预设动作", "插件扩展：用插件连接更多 App 和外部服务", "条件触发：满足指定时间、地点或状态后自动运行", "本地执行：多数任务直接在手机上完成", "高度可配置：适合愿意自己搭规则的高级用户"],
+    activityEvidence: "官方 release notes 显示 Tasker v6.6 在 2026-02-05 更新，v6.5/v6.4/v6.3 也在 2024-2025 持续更新。",
+    workflowModel: "用户手动配置条件、任务、插件和系统权限，按规则触发自动化。",
+    workflowSteps: ["选择触发条件", "配置任务动作", "授权系统权限", "接入插件能力", "本地按规则自动执行"],
+    coreCapabilities: ["Android 系统自动化", "插件生态", "条件触发", "本地执行", "高可定制"],
+    strengths: ["稳定、强大、长期用户基础", "本地权限和系统能力深", "适合高级用户"],
+    weaknesses: ["不能直接用一句话描述任务", "学习成本高", "不擅长理解第三方 App 里的复杂业务含义"],
+    fitAgainstHaomai: "是高级用户替代品。好麦应强调“无需配置规则，描述目标即可执行”。",
+    scores: { mobileControl: 72, browserControl: 8, desktopControl: 0, aiAutonomy: 18, productization: 66, enterpriseReady: 30 },
+    sources: [{ label: "官网", url: "https://tasker.joaoapps.com/" }, { label: "官方下载/试用", url: "https://tasker.joaoapps.com/download.html" }, { label: "Google Play", url: "https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "Automate by LlamaLab",
+    category: "手机 AI Agent",
+    origin: "国外",
+    platform: "Android",
+    layer: "替代方案",
+    maturity: "商业化",
+    pricingModel: "开源/免费",
+    pricing: "基础免费；高级能力通常通过 Premium 解锁，价格以 Google Play 为准。",
+    pricingDetails: { type: "免费 + Premium 解锁", price: "基础免费；高级价格以 Google Play 为准", note: "适合确定性流程，高级节点和规模化使用可能需要付费。" },
+    productSummary: "Automate 像一个手机自动化流程图工具。用户把“触发条件、判断分支、执行动作”连成一张流程图，手机就会按流程自动运行。",
+    capabilityDescription: ["用流程图配置手机动作，例如改设置、处理文件、发网络请求、读取通知", "用条件分支和循环表达复杂规则，比如满足某个状态再执行下一步", "复用社区模板，快速搭建常见的个人效率或设备联动流程"],
+    technicalSolution: ["编排层：用可视化流程图表达触发、判断、动作和分支", "执行层：依赖 Android 权限、本地服务、系统事件和可调用接口", "智能层：没有 AI 理解能力，优点是稳定，缺点是复杂流程要人自己维护"],
+    coreFunctionDescription: ["流程自动化：把一串手机动作连成可重复运行的流程", "可视化编辑：用拖拽节点代替写脚本", "系统事件触发：根据位置、电量、网络、通知等状态启动流程", "模板复用：可以使用社区现成流程，减少从零配置"],
+    activityEvidence: "官方站点和文档仍在维护；应用分发页显示 2026 年仍有 1.51.x 版本更新。",
+    workflowModel: "流程图式 block 编排，触发器和动作节点连接成自动化流程。",
+    workflowSteps: ["选择流程触发器", "拖拽 block 节点", "配置每个节点参数", "连接条件分支", "在手机本地运行流程"],
+    coreCapabilities: ["Android 流程自动化", "流程图编辑器", "传感器/系统事件触发", "社区流程"],
+    strengths: ["可视化比脚本友好", "Android 能力覆盖广", "适合确定性流程"],
+    weaknesses: ["不是 AI 产品", "不擅长理解 App 页面里的业务含义", "复杂流程需要人工长期维护"],
+    fitAgainstHaomai: "适合拿来解释传统自动化边界：规则强，但不理解运营目标。",
+    scores: { mobileControl: 64, browserControl: 6, desktopControl: 0, aiAutonomy: 12, productization: 62, enterpriseReady: 24 },
+    sources: [{ label: "官网", url: "https://llamalab.com/automate/" }, { label: "官方文档", url: "https://llamalab.com/automate/doc/" }, { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.llamalab.automate" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "Maestro",
+    category: "远控/RPA/传统自动化",
+    origin: "国外",
+    platform: "iOS、Android、Web；本地测试环境和 CI/CD",
+    layer: "基础设施",
+    maturity: "商业化",
+    pricingModel: "开源/免费",
+    pricing: "核心框架开源免费；商业云服务和团队能力以官方页面为准。",
+    pricingDetails: { type: "开源框架 + 商业服务", price: "核心框架免费；云端/团队能力按官方报价", note: "买的不是 AI Agent，而是稳定的移动/Web UI 自动化测试和执行基础设施。" },
+    productSummary: "Maestro 是移动和 Web 的 E2E 自动化测试框架。它不靠 AI 自主理解任务，而是让团队用 YAML 脚本描述点击、输入、断言等 UI 流程，然后在真机、模拟器或 CI 中稳定复跑。",
+    capabilityDescription: ["自动执行 App 或 Web 的测试流程，例如打开页面、点击按钮、输入文本、校验结果", "把测试脚本接入 CI/CD，让每次发版前自动跑关键路径", "适合 QA、研发和移动基础设施团队，不适合普通运营用户一句话下任务"],
+    technicalSolution: ["脚本层：用 YAML 定义 UI 操作步骤和断言", "执行层：连接 iOS、Android 或 Web 环境，执行 tap、input、scroll、assert 等动作", "工程层：接入本地开发、CI/CD 和云端测试基础设施，保证流程可复现"],
+    coreFunctionDescription: ["移动 UI 自动化：在 iOS 和 Android 上重复执行点击、输入和滑动", "Web 自动化：覆盖一部分网页端 E2E 流程", "CI 集成：让自动化流程进入研发发布链路", "可读脚本：用 YAML 降低写自动化测试的门槛", "稳定复跑：重点是确定性测试，而不是 AI 自主探索"],
+    activityEvidence: "Maestro GitHub pushed_at 为 2026-05-07，官方站点仍在维护。",
+    workflowModel: "YAML 脚本 -> 连接设备或浏览器 -> 执行 UI 动作 -> 断言结果 -> CI 报告。",
+    workflowSteps: ["编写 YAML 测试脚本", "连接 iOS、Android 或 Web 环境", "执行点击、输入、滑动和断言", "在本地或 CI 中复跑", "输出测试结果和失败信息"],
+    coreCapabilities: ["移动 E2E 自动化", "Web 自动化", "YAML 流程", "CI/CD", "测试报告"],
+    strengths: ["移动自动化工程成熟", "脚本可读性强", "适合研发和 QA 大规模复跑"],
+    weaknesses: ["不是 AI Agent", "不能用自然语言临时规划复杂业务目标", "运营增长场景需要额外产品化包装"],
+    fitAgainstHaomai: "相邻基础设施。好麦可学习其稳定执行和报告机制，但要在自然语言、手机任务模板和运营用户体验上拉开差异。",
+    scores: { mobileControl: 72, browserControl: 40, desktopControl: 12, aiAutonomy: 4, productization: 74, enterpriseReady: 76 },
+    sources: [{ label: "官网", url: "https://maestro.dev/" }, { label: "官方 GitHub", url: "https://github.com/mobile-dev-inc/Maestro" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "AirDroid Business",
+    category: "远控/RPA/传统自动化",
+    origin: "国内",
+    platform: "Android 设备、Windows 设备；企业设备管理和远程控制",
+    layer: "替代方案",
+    maturity: "成熟企业",
+    pricingModel: "订阅",
+    pricing: "Basic $1/设备/月；Standard $1.75/设备/月；Enterprise $2.75/设备/月，均按年计费且通常 10 台起。",
+    pricingDetails: { type: "按设备订阅", price: "Basic $1/设备/月；Standard $1.75/设备/月；Enterprise $2.75/设备/月", note: "通常按年计费且 10 台起，买的是设备管理和远控能力。" },
+    productSummary: "AirDroid Business 是企业用来管手机和平板的后台。它可以远程查看和控制设备、下发 App、锁定设备用途、管理文件和位置。它能控制手机，但不是 AI 自动办事。",
+    capabilityDescription: ["批量管理公司设备，例如门店平板、售后设备、工业终端", "远程查看或控制 Android 设备，解决现场人员不方便操作的问题", "统一安装 App、下发策略、限制设备只能运行指定业务"],
+    technicalSolution: ["设备层：在企业设备上安装管理客户端并获取管理权限", "后台层：通过云后台做分组、远控、应用下发、文件和位置管理", "自动化层：主要是规则和运维动作，没有自然语言 AI 规划"],
+    coreFunctionDescription: ["远程控制：IT 人员可以远程查看和操作设备", "设备管理：批量管理权限、策略和设备状态", "Kiosk 模式：把设备锁定到指定 App 或业务界面", "应用发布：远程安装、更新和管理企业 App", "位置管理：按设备位置做监控和告警", "文件管理：远程分发和回收设备文件"],
+    activityEvidence: "AirDroid Business 官方定价页 2026 年仍在更新，页面显示 © 2011-2026 Sand Studio。",
+    workflowModel: "设备注册 -> 远程控制/查看/文件/策略/Kiosk/应用管理 -> 管理后台运维。",
+    workflowSteps: ["注册企业设备", "在后台分组管理", "远程查看或控制设备", "下发 Kiosk/应用/策略", "监控位置、文件和设备状态"],
+    coreCapabilities: ["Android 远控", "MDM", "Kiosk", "应用发布", "地理围栏", "文件管理"],
+    strengths: ["设备管理成熟", "价格低且透明", "适合企业批量设备"],
+    weaknesses: ["核心是人工远控和设备管理，不是 AI 自主执行", "主要面向 IT 运维，不面向增长任务"],
+    fitAgainstHaomai: "不是 AI 竞品，但会影响客户对设备控制成本的预期。好麦需要解释 AI 执行价值高于远控通道。",
+    scores: { mobileControl: 76, browserControl: 10, desktopControl: 28, aiAutonomy: 6, productization: 82, enterpriseReady: 86 },
+    sources: [{ label: "官网", url: "https://www.airdroid.com/business/" }, { label: "官方定价", url: "https://www.airdroid.com/pricing/airdroid-business/" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "AnyDesk",
+    category: "远控/RPA/传统自动化",
+    origin: "国外",
+    platform: "Windows、macOS、Linux、Android、iOS",
+    layer: "替代方案",
+    maturity: "成熟企业",
+    pricingModel: "订阅",
+    pricing: "Solo、Standard、Advanced、Ultimate 分层；官网公开并发连接、托管设备、移动端支持等权益。",
+    pricingDetails: { type: "远控账号订阅", price: "Solo / Standard / Advanced / Ultimate 分层", note: "价格随并发连接、托管设备、移动支持和企业能力变化。" },
+    productSummary: "AnyDesk 是远程桌面工具。它让一个人从自己的电脑上连接另一台电脑或手机，看到对方屏幕，并用鼠标键盘远程操作。",
+    capabilityDescription: ["远程控制电脑、手机和平板，用于支持、运维和远程办公", "提前授权后，可以无人值守进入公司设备", "在本地和远端设备之间传文件、打印文件、记录会话"],
+    technicalSolution: ["连接层：建立远程桌面会话并传输屏幕画面", "控制层：把人的鼠标、键盘或触控操作传到目标设备", "管理层：提供账号权限、设备列表、并发连接和企业安全设置"],
+    coreFunctionDescription: ["远程桌面：把远端屏幕传到本地，让人远程操作", "无人值守访问：预先授权后，不需要现场人员点确认", "文件传输：在两台设备之间传文件", "远程打印：把远端文件通过本地打印机打印", "移动设备支持：可用于手机和平板的远程支持"],
+    activityEvidence: "AnyDesk 官方 changelog 显示 Windows 版 2026-04-09、Android 版 2026-05-04 仍有更新。",
+    workflowModel: "用户或 IT 人员发起远程连接，人工接管设备完成操作。",
+    workflowSteps: ["安装远控客户端", "建立远程连接", "人工接管鼠标/键盘/屏幕", "传输文件或远程支持", "结束会话并留存连接记录"],
+    coreCapabilities: ["远程桌面", "无人值守访问", "文件传输", "远程打印", "移动设备支持"],
+    strengths: ["跨平台稳定", "品牌成熟", "适合支持和远程办公"],
+    weaknesses: ["没有自然语言任务规划", "无法自动完成多 App 运营任务", "价值点是连接而非智能执行"],
+    fitAgainstHaomai: "替代的是人工代操，不替代 Agent。好麦可在销售话术中区分“远控工具”和“任务结果”。",
+    scores: { mobileControl: 42, browserControl: 18, desktopControl: 78, aiAutonomy: 0, productization: 78, enterpriseReady: 82 },
+    sources: [{ label: "官网", url: "https://www.anydesk.com/en" }, { label: "官方定价", url: "https://www.anydesk.com/en/pricing" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "TeamViewer",
+    category: "远控/RPA/传统自动化",
+    origin: "国外",
+    platform: "电脑、手机、企业设备和物联网设备",
+    layer: "替代方案",
+    maturity: "成熟企业",
+    pricingModel: "订阅",
+    pricing: "按单用户、团队、企业授权；移动设备支持、资产管理、DEX 等为附加能力。",
+    pricingDetails: { type: "远程支持授权订阅", price: "单用户、团队、企业分层；具体按地区官网报价", note: "移动设备支持、资产管理、DEX 等通常作为更高阶权益或附加能力。" },
+    productSummary: "TeamViewer 是更企业化的远程支持平台。它不仅能远程控制设备，还能管理设备资产、记录支持过程，并接入企业 IT 服务流程。",
+    capabilityDescription: ["让客服或 IT 人员远程进入电脑、手机或企业设备处理问题", "把设备纳入资产管理，方便企业知道设备在哪、状态如何", "用 AI 摘要整理支持过程，帮助团队沉淀服务记录"],
+    technicalSolution: ["连接层：提供跨平台远程访问和安全连接", "管理层：记录会话、管理账号权限、维护设备资产", "AI 层：主要辅助总结和支持流程，不负责自主完成多 App 任务"],
+    coreFunctionDescription: ["远程支持：远程进入用户设备解决问题", "远程控制：把人工操作传到电脑、手机或企业设备", "移动设备支持：覆盖手机、平板和企业移动终端", "资产管理：把设备纳入企业资产和服务流程", "AI 摘要：自动整理支持过程，减少人工记录"],
+    activityEvidence: "TeamViewer 官方定价页 2026 年仍在更新，并展示 TeamViewer AI / DEX / 移动设备支持等当前权益。",
+    workflowModel: "远程连接 -> 人工控制/支持 -> 设备管理和 IT 服务流程。",
+    workflowSteps: ["发起远程支持会话", "人工查看和控制设备", "处理文件、设置或故障", "记录支持过程", "接入 IT 服务和资产管理流程"],
+    coreCapabilities: ["远程支持", "远程控制", "移动设备支持", "资产管理", "AI 会话摘要"],
+    strengths: ["企业信任强", "远控生态完整", "IT 服务场景成熟"],
+    weaknesses: ["AI 主要用来辅助客服和 IT 记录，不是自主手机任务执行", "价格和采购流程更偏企业客户"],
+    fitAgainstHaomai: "可作为企业采购对照：TeamViewer 买连接和支持，好麦买 AI 执行和增长结果。",
+    scores: { mobileControl: 38, browserControl: 16, desktopControl: 86, aiAutonomy: 8, productization: 84, enterpriseReady: 90 },
+    sources: [{ label: "官网", url: "https://www.teamviewer.com/en-us/" }, { label: "官方定价", url: "https://www.teamviewer.com/en-us/pricing/" }],
+    lastChecked: reportDate
+  },
+  {
+    name: "Microsoft Power Automate Desktop",
+    category: "远控/RPA/传统自动化",
+    origin: "国外",
+    platform: "Windows 电脑、微软生态、云端业务流程",
+    layer: "替代方案",
+    maturity: "成熟企业",
+    pricingModel: "订阅",
+    pricing: "Premium $15/用户/月；Process $150/bot/月；Hosted Process $215/bot/月，按年计费。",
+    pricingDetails: { type: "用户 + Bot 订阅", price: "Premium $15/用户/月；Process $150/bot/月；Hosted Process $215/bot/月", note: "按年计费，适合企业桌面流程和后台自动化。" },
+    productSummary: "Microsoft Power Automate Desktop 是微软的企业流程自动化工具。它适合把公司里重复的电脑操作、网页操作、邮件审批和业务系统流程做成自动流程。",
+    capabilityDescription: ["录制员工在 Windows 电脑上的重复操作，再让机器人重复执行", "连接 Microsoft 365、SharePoint、Dynamics 和其他业务系统", "支持有人值守和无人值守两种模式：前者辅助员工，后者在后台自动跑"],
+    technicalSolution: ["编排层：用低代码流程设计器画出自动化步骤", "执行层：通过桌面录制、界面自动化和系统连接器运行流程", "治理层：用 Power Platform 管理权限、环境、日志和企业部署"],
+    coreFunctionDescription: ["桌面自动化：录制并重复执行 Windows 应用里的操作", "云端流程：把邮件、审批、数据库和 SaaS 事件串起来", "系统连接器：连接微软和第三方业务系统", "流程分析：找出企业里适合自动化的重复环节", "无人值守机器人：不需要人坐在电脑前，也能在后台跑流程"],
+    activityEvidence: "Microsoft 官方 Power Automate 定价页 2026 年仍在更新，包含 Premium、Process、Hosted Process 当前价格。",
+    workflowModel: "低代码流程 -> 桌面流/云流 -> attended 或 unattended RPA 执行。",
+    workflowSteps: ["用低代码设计流程", "连接 Microsoft 和第三方服务", "录制或编排桌面动作", "选择 attended/unattended 执行", "通过云端监控和治理"],
+    coreCapabilities: ["桌面 RPA", "云流程", "连接器", "流程挖掘", "无人值守 bot"],
+    strengths: ["企业采购友好", "Microsoft 生态强", "确定性流程可靠"],
+    weaknesses: ["手机 App 控制不是核心", "自然语言 Agent 体验不是主入口", "流程建设成本高"],
+    fitAgainstHaomai: "企业自动化标杆。好麦应从移动 App 和增长运营这种 RPA 覆盖弱的场景切入。",
+    scores: { mobileControl: 4, browserControl: 54, desktopControl: 86, aiAutonomy: 26, productization: 80, enterpriseReady: 92 },
+    sources: [{ label: "官网", url: "https://www.microsoft.com/en-us/power-platform/products/power-automate" }, { label: "官方定价", url: "https://www.microsoft.com/en-us/power-platform/products/power-automate/pricing" }],
+    lastChecked: reportDate
+  }
+];
+
+
+export const categories: CompetitorCategory[] = [
+  "手机 AI Agent",
+  "浏览器/电脑 AI Agent",
+  "远控/RPA/传统自动化"
+];
