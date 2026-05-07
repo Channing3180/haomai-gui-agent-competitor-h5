@@ -115,7 +115,7 @@ h1 {
 .section {
   width: min(1280px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 48px 0;
+  padding: 40px 0;
 }
 
 .matrix-section {
@@ -147,8 +147,8 @@ h1 {
 .matrix-head {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 12px;
-  margin-bottom: 18px;
+  gap: 8px;
+  margin-bottom: 14px;
 }
 
 .matrix-head span,
@@ -156,13 +156,15 @@ h1 {
   color: var(--blue);
   font-size: 12px;
   font-weight: 800;
+  line-height: 1.2;
 }
 
 .matrix-head h2 {
+  max-width: 920px;
   color: var(--ink);
-  font-size: clamp(28px, 4.4vw, 50px);
-  line-height: 1.05;
-  margin-top: 8px;
+  font-size: clamp(26px, 2.8vw, 42px);
+  line-height: 1.12;
+  margin-top: 6px;
 }
 
 .matrix-head p {
