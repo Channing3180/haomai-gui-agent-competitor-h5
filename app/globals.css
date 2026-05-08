@@ -195,7 +195,7 @@ h1 {
 .toolbar-filters {
   display: flex;
   flex: 1 1 auto;
-  gap: 22px;
+  gap: 18px;
   align-items: flex-start;
   min-width: 0;
 }
@@ -204,6 +204,46 @@ h1 {
   display: grid;
   gap: 7px;
   min-width: 0;
+}
+
+.search-filter {
+  display: grid;
+  gap: 7px;
+  flex: 1 1 220px;
+  min-width: 190px;
+  max-width: 340px;
+}
+
+.search-filter span {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.search-filter input {
+  width: 100%;
+  min-height: 34px;
+  color: var(--ink);
+  background: #ffffff;
+  border: 1px solid #c9d9ff;
+  border-radius: 999px;
+  outline: none;
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.search-filter input::placeholder {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.search-filter input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(36, 87, 255, 0.12);
 }
 
 .filters {

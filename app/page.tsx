@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { categories, competitors, reportDate, traditionalAutomationCompetitors, type Competitor, type CompetitorCategory } from "@/data/competitors";
+import { categories, competitors, reportDate, traditionalAutomationCompetitors, type Competitor, type CompetitorCategory, type PricingModel } from "@/data/competitors";
 import { githubGuiProjects, type GithubGuiProject } from "@/data/github-projects";
 import { systemPhoneAgents, type SystemPhoneAgent } from "@/data/system-phone-agents";
 
@@ -108,6 +108,102 @@ const systemPhoneScreenshotSlugs: Record<string, string> = {
   "Apple Intelligence / Siri App Intents": "apple-intelligence-siri"
 };
 
+const allLabel = "全部";
+const priceOptions: (typeof allLabel | PricingModel)[] = [allLabel, "开源/免费", "订阅", "按量", "企业定制", "一次性购买"];
+const originOptions = [allLabel, "国内", "国外"] as const;
+const systemCommercialOptions = [allLabel, "硬件/系统随附", "生态合作", "未单独收费"] as const;
+const githubCategories = [allLabel, "手机 GUI Agent", "电脑/浏览器 GUI Agent", "GUI Agent 模型/评测"] as const;
+
+function searchableText(values: unknown[]) {
+  return values.flatMap((value) => {
+    if (!value) return [];
+    if (Array.isArray(value)) return value;
+    if (typeof value === "object") return Object.values(value as Record<string, unknown>);
+    return String(value);
+  }).join(" ").toLowerCase();
+}
+
+function matchesSearch(values: unknown[], keyword: string) {
+  const normalized = keyword.trim().toLowerCase();
+  if (!normalized) return true;
+  return searchableText(values).includes(normalized);
+}
+
+function systemCommercialBucket(item: SystemPhoneAgent) {
+  const text = `${item.pricing} ${item.commercialModel}`;
+  if (text.includes("工程样机") || text.includes("硬件") || text.includes("随") || text.includes("系统")) return "硬件/系统随附";
+  if (text.includes("合作") || text.includes("生态")) return "生态合作";
+  return "未单独收费";
+}
+
+type FilterToolbarProps = {
+  primaryLabel: string;
+  primaryOptions: readonly string[];
+  primaryValue: string;
+  onPrimaryChange: (value: string) => void;
+  secondaryLabel: string;
+  secondaryOptions: readonly string[];
+  secondaryValue: string;
+  onSecondaryChange: (value: string) => void;
+  searchValue: string;
+  onSearchChange: (value: string) => void;
+  resultCount: number;
+  totalCount: number;
+};
+
+function FilterToolbar({
+  primaryLabel,
+  primaryOptions,
+  primaryValue,
+  onPrimaryChange,
+  secondaryLabel,
+  secondaryOptions,
+  secondaryValue,
+  onSecondaryChange,
+  searchValue,
+  onSearchChange,
+  resultCount,
+  totalCount
+}: FilterToolbarProps) {
+  return (
+    <div className="matrix-toolbar" aria-label="表格筛选">
+      <div className="toolbar-filters">
+        <div className="filter-group">
+          <span>{primaryLabel}</span>
+          <div className="filters">
+            {primaryOptions.map((option) => (
+              <button className={primaryValue === option ? "active" : ""} key={option} onClick={() => onPrimaryChange(option)}>
+                {option}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="filter-group">
+          <span>{secondaryLabel}</span>
+          <div className="filters compact">
+            {secondaryOptions.map((option) => (
+              <button className={secondaryValue === option ? "active" : ""} key={option} onClick={() => onSecondaryChange(option)}>
+                {option}
+              </button>
+            ))}
+          </div>
+        </div>
+        <label className="search-filter">
+          <span>查找</span>
+          <input
+            aria-label="按产品、功能、技术方案或商业模式查找"
+            onChange={(event) => onSearchChange(event.target.value)}
+            placeholder="输入产品 / 技术 / 商业模式"
+            type="search"
+            value={searchValue}
+          />
+        </label>
+      </div>
+      <strong><span>{resultCount}</span><small>/ {totalCount}</small></strong>
+    </div>
+  );
+}
+
 function screenshotFor(item: Competitor) {
   const slug = screenshotSlugs[item.name];
   return slug ? `/screenshots/${slug}.png` : "";
@@ -147,14 +243,52 @@ async function openInDefaultBrowser(url: string) {
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<CompetitorCategory | "全部">("全部");
   const [activePrice, setActivePrice] = useState("全部");
+  const [mainSearch, setMainSearch] = useState("");
+  const [systemOrigin, setSystemOrigin] = useState("全部");
+  const [systemCommercial, setSystemCommercial] = useState("全部");
+  const [systemSearch, setSystemSearch] = useState("");
+  const [githubCategory, setGithubCategory] = useState("全部");
+  const [githubOrigin, setGithubOrigin] = useState("全部");
+  const [githubSearch, setGithubSearch] = useState("");
+  const [traditionalCategory, setTraditionalCategory] = useState<CompetitorCategory | "全部">("全部");
+  const [traditionalPrice, setTraditionalPrice] = useState("全部");
+  const [traditionalSearch, setTraditionalSearch] = useState("");
 
   const filtered = useMemo(() => {
     return competitors.filter((item) => {
       const categoryMatch = activeCategory === "全部" || item.category === activeCategory;
       const priceMatch = activePrice === "全部" || item.pricingModel === activePrice;
-      return categoryMatch && priceMatch;
+      const searchMatch = matchesSearch([item.name, item.origin, item.category, item.productSummary, item.capabilityDescription, item.technicalSolution, item.coreFunctionDescription, item.pricingDetails, item.strengths, item.weaknesses], mainSearch);
+      return categoryMatch && priceMatch && searchMatch;
     });
-  }, [activeCategory, activePrice]);
+  }, [activeCategory, activePrice, mainSearch]);
+
+  const filteredSystemPhoneAgents = useMemo(() => {
+    return systemPhoneAgents.filter((item) => {
+      const originMatch = systemOrigin === "全部" || item.origin === systemOrigin;
+      const commercialMatch = systemCommercial === "全部" || systemCommercialBucket(item) === systemCommercial;
+      const searchMatch = matchesSearch([item.name, item.origin, item.platform, item.productSummary, item.capabilityDescription, item.technicalSolution, item.pricing, item.commercialModel, item.activityEvidence, item.latestSignals], systemSearch);
+      return originMatch && commercialMatch && searchMatch;
+    });
+  }, [systemOrigin, systemCommercial, systemSearch]);
+
+  const filteredGithubProjects = useMemo(() => {
+    return githubGuiProjects.filter((item) => {
+      const categoryMatch = githubCategory === "全部" || item.category === githubCategory;
+      const originMatch = githubOrigin === "全部" || item.origin === githubOrigin;
+      const searchMatch = matchesSearch([item.name, item.repo, item.origin, item.category, item.projectSummary, item.capabilityDescription, item.technicalSolution, item.strengths, item.weaknesses, item.openSourceStatus, item.updatedEvidence], githubSearch);
+      return categoryMatch && originMatch && searchMatch;
+    });
+  }, [githubCategory, githubOrigin, githubSearch]);
+
+  const filteredTraditionalCompetitors = useMemo(() => {
+    return traditionalAutomationCompetitors.filter((item) => {
+      const categoryMatch = traditionalCategory === "全部" || item.category === traditionalCategory;
+      const priceMatch = traditionalPrice === "全部" || item.pricingModel === traditionalPrice;
+      const searchMatch = matchesSearch([item.name, item.origin, item.category, item.productSummary, item.capabilityDescription, item.technicalSolution, item.coreFunctionDescription, item.pricingDetails, item.strengths, item.weaknesses], traditionalSearch);
+      return categoryMatch && priceMatch && searchMatch;
+    });
+  }, [traditionalCategory, traditionalPrice, traditionalSearch]);
 
   return (
     <main>
@@ -175,31 +309,20 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="matrix-toolbar" aria-label="竞品筛选">
-          <div className="toolbar-filters">
-            <div className="filter-group">
-              <span>赛道</span>
-              <div className="filters">
-                {(["全部", ...categories] as const).map((category) => (
-                  <button className={activeCategory === category ? "active" : ""} key={category} onClick={() => setActiveCategory(category)}>
-                    {category}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="filter-group">
-              <span>收费</span>
-              <div className="filters compact">
-                {(["全部", "开源/免费", "订阅", "按量", "企业定制", "一次性购买"] as const).map((price) => (
-                  <button className={activePrice === price ? "active" : ""} key={price} onClick={() => setActivePrice(price)}>
-                    {price}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-          <strong><span>{filtered.length}</span><small>/ {competitors.length}</small></strong>
-        </div>
+        <FilterToolbar
+          onPrimaryChange={(value) => setActiveCategory(value as CompetitorCategory | "全部")}
+          onSearchChange={setMainSearch}
+          onSecondaryChange={setActivePrice}
+          primaryLabel="赛道"
+          primaryOptions={[allLabel, ...categories]}
+          primaryValue={activeCategory}
+          resultCount={filtered.length}
+          searchValue={mainSearch}
+          secondaryLabel="收费"
+          secondaryOptions={priceOptions}
+          secondaryValue={activePrice}
+          totalCount={competitors.length}
+        />
 
         <div className="table-shell">
           <table className="competitor-table">
@@ -333,6 +456,21 @@ export default function Home() {
           </div>
         </div>
 
+        <FilterToolbar
+          onPrimaryChange={setSystemOrigin}
+          onSearchChange={setSystemSearch}
+          onSecondaryChange={setSystemCommercial}
+          primaryLabel="地区"
+          primaryOptions={originOptions}
+          primaryValue={systemOrigin}
+          resultCount={filteredSystemPhoneAgents.length}
+          searchValue={systemSearch}
+          secondaryLabel="商业形态"
+          secondaryOptions={systemCommercialOptions}
+          secondaryValue={systemCommercial}
+          totalCount={systemPhoneAgents.length}
+        />
+
         <div className="table-shell">
           <table className="competitor-table system-phone-table">
             <thead>
@@ -344,7 +482,7 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              {systemPhoneAgents.map((item) => (
+              {filteredSystemPhoneAgents.map((item) => (
                 <tr key={item.name}>
                   <td className="product-cell">
                     <div className="product-title-line">
@@ -429,6 +567,21 @@ export default function Home() {
           </div>
         </div>
 
+        <FilterToolbar
+          onPrimaryChange={setGithubCategory}
+          onSearchChange={setGithubSearch}
+          onSecondaryChange={setGithubOrigin}
+          primaryLabel="赛道"
+          primaryOptions={githubCategories}
+          primaryValue={githubCategory}
+          resultCount={filteredGithubProjects.length}
+          searchValue={githubSearch}
+          secondaryLabel="地区"
+          secondaryOptions={originOptions}
+          secondaryValue={githubOrigin}
+          totalCount={githubGuiProjects.length}
+        />
+
         <div className="table-shell">
           <table className="competitor-table github-table">
             <thead>
@@ -441,7 +594,7 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              {githubGuiProjects.map((item) => (
+              {filteredGithubProjects.map((item) => (
                 <tr key={item.repo}>
                   <td className="product-cell">
                     <div className="product-title-line">
@@ -530,6 +683,21 @@ export default function Home() {
           </div>
         </div>
 
+        <FilterToolbar
+          onPrimaryChange={(value) => setTraditionalCategory(value as CompetitorCategory | "全部")}
+          onSearchChange={setTraditionalSearch}
+          onSecondaryChange={setTraditionalPrice}
+          primaryLabel="赛道"
+          primaryOptions={[allLabel, ...categories]}
+          primaryValue={traditionalCategory}
+          resultCount={filteredTraditionalCompetitors.length}
+          searchValue={traditionalSearch}
+          secondaryLabel="收费"
+          secondaryOptions={priceOptions}
+          secondaryValue={traditionalPrice}
+          totalCount={traditionalAutomationCompetitors.length}
+        />
+
         <div className="table-shell">
           <table className="competitor-table traditional-table">
             <thead>
@@ -542,7 +710,7 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              {traditionalAutomationCompetitors.map((item) => (
+              {filteredTraditionalCompetitors.map((item) => (
                 <tr key={item.name}>
                   <td className="product-cell">
                     <div className="product-title-line">
