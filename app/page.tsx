@@ -536,19 +536,18 @@ export default function Home() {
                   <td>
                     <div className="pricing-stack github-status">
                       <strong>{item.pricing}</strong>
-                      <b>{item.activityEvidence}</b>
                       <span>{item.commercialModel}</span>
                       <div className="news-strip">
-                        <span className="cell-kicker">最新动向</span>
-                        <div className="news-list">
-                          {item.latestSignals.map((signal) => (
+                        <span className="cell-kicker">最新报道（3 条）</span>
+                        <ol className="news-list">
+                          {item.latestSignals.slice(0, 3).map((signal) => (
                             <article className="news-item" key={`${signal.date}-${signal.title}`}>
                               <time>{signal.date}</time>
                               <p>{signal.title}</p>
                               <em>{signal.source}</em>
                             </article>
                           ))}
-                        </div>
+                        </ol>
                       </div>
                     </div>
                   </td>
