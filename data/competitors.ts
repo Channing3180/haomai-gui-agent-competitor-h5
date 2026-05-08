@@ -42,7 +42,7 @@ export type Competitor = {
   lastChecked: string;
 };
 
-export const reportDate = "2026-05-07";
+export const reportDate = "2026-05-08";
 
 export const competitors: Competitor[] = [
   {
@@ -103,8 +103,8 @@ export const competitors: Competitor[] = [
     layer: "相邻竞品",
     maturity: "商业化",
     pricingModel: "订阅",
-    pricing: "包含在 ChatGPT 订阅权益中；不同套餐每月可用次数不同。",
-    pricingDetails: { type: "ChatGPT 订阅额度", price: "Plus 40 条/月；Pro 400 条/月；Business/Enterprise 40 条/月或弹性计费", note: "购买的是通用 Agent 能力，不是手机真机控制。" },
+    pricing: "包含在 ChatGPT 订阅权益中；不同套餐有不同的 agent message 额度或企业弹性额度。",
+    pricingDetails: { type: "ChatGPT 订阅权益", price: "Plus / Pro / Business / Enterprise 按账号权益开放，额度以官方帮助中心为准", note: "用户买的是 ChatGPT 通用 Agent 能力，不是手机真机控制；高风险动作仍需要确认。" },
     productSummary: "ChatGPT agent / Operator 可以理解成“会自己用浏览器和电脑工具的 ChatGPT”。用户说一个目标，它会打开网页、查资料、填写表单、整理文件，并在需要时请求确认。",
     capabilityDescription: ["替用户浏览网页、查资料、比较信息，并整理成报告或表格", "在虚拟电脑里使用浏览器、代码、文件和连接器完成多步骤任务", "遇到登录、购买、发送消息等敏感动作时，先让用户确认"],
     technicalSolution: ["理解层：读取网页内容、屏幕状态和工具返回结果", "执行层：在隔离的虚拟电脑、浏览器和代码环境里完成任务", "安全层：通过确认、暂停和接管机制限制高风险动作"],
@@ -153,13 +153,13 @@ export const competitors: Competitor[] = [
     layer: "基础设施",
     maturity: "商业化",
     pricingModel: "按量",
-    pricing: "AI Agent Task $0.01 初始化 + 按 step；Browser Session $0.06/小时；Skill Creation $2/skill；Proxy $10/GB。",
-    pricingDetails: { type: "云浏览器按量计费", price: "Task $0.01 初始化 + 按 step；Session $0.06/小时；Skill $2/个；Proxy $10/GB", note: "适合开发者试错，成本随步骤数、会话时长和代理流量增长。" },
+    pricing: "Browser Use Cloud 已从早期逐项计费转向平台套餐：Free / Pro / Team / Scale 分层，公开页显示 Pro $20/月、Team $30/月/人、Scale $100/月/人。",
+    pricingDetails: { type: "开发者平台订阅", price: "Free；Pro $20/月；Team $30/月/人；Scale $100/月/人", note: "买的是云浏览器、任务运行和团队额度，不是手机 App 控制。" },
     productSummary: "Browser Use Cloud 是“给 AI 用的云浏览器”。开发者不用自己维护浏览器环境，只要发起一个任务，AI 就能在云端打开网页、点击、输入、提取信息。",
     capabilityDescription: ["创建云端浏览器，让 AI 自动执行网页任务", "把常用网页流程保存下来，下次重复执行", "适合批量网页检查、数据采集、表单填写和后台操作"],
     technicalSolution: ["浏览器层：提供云端浏览器、会话管理和代理网络", "执行层：AI 读取网页状态，并一步步点击、输入、提取或验证结果", "复用层：把稳定流程保存为 skill，也就是可重复调用的网页操作能力"],
     coreFunctionDescription: ["网页任务执行：把目标变成打开网页、点击、输入、提取信息的步骤", "云浏览器：开发者不用自己搭浏览器和运行环境", "流程复用：把常见任务保存下来重复跑", "代理支持：需要不同网络环境时可以接入代理", "接口接入：可以把这套网页操作能力接进自己的产品"],
-    activityEvidence: "browser-use/browser-use GitHub 在 2026-04 仍有 release 和代码更新。",
+    activityEvidence: "Browser Use 官网 2026 年公开套餐定价；GitHub 仍持续高频更新，是浏览器 Agent 基础设施里的活跃项目。",
     workflowModel: "API 创建浏览器会话，Agent 观察页面并按 step 执行，可封装为 skill 复用。",
     workflowSteps: ["通过 API 创建浏览器会话", "Agent 观察网页状态", "按 step 执行点击/输入/提取", "把稳定流程封装为 skill", "按任务、会话和代理资源计费"],
     coreCapabilities: ["AI 浏览器任务", "云浏览器会话", "Skill 创建/执行", "代理流量", "API 化"],
@@ -203,13 +203,13 @@ export const competitors: Competitor[] = [
     layer: "相邻竞品",
     maturity: "商业化",
     pricingModel: "订阅",
-    pricing: "官方帮助中心公开会员/积分制信息；具体权益以账号所在地区页面为准。",
-    pricingDetails: { type: "会员/积分制", price: "公开帮助中心说明会员机制；具体价格按地区和账号页面为准", note: "权益口径需要以登录后的官方页面核验。" },
+    pricing: "官方帮助中心显示 Manus 采用会员 + credits 模式，Plus $19/月、Pro $199/月；也有 Basic 免费层。",
+    pricingDetails: { type: "会员 + Credits", price: "Basic 免费；Plus $19/月；Pro $199/月", note: "买的是云端通用 Agent 任务额度，权益会随地区和账号页面变化。" },
     productSummary: "Manus 更像一个“云端办事助理”。用户把一个任务交给它，比如调研、整理资料、做表格，它会自己拆步骤、查网页、处理文件，最后交付结果。",
     capabilityDescription: ["用户只要描述目标，Manus 负责把大任务拆成小步骤", "适合做资料调研、信息整理、旅行规划、招聘搜索等任务", "任务可以在云端继续跑，用户不需要一直盯着浏览器"],
     technicalSolution: ["任务层：把用户目标拆成计划和子任务", "工具层：调用网页浏览、文件处理和数据整理工具", "产品层：底层执行细节公开较少，更像封闭的云端任务平台"],
     coreFunctionDescription: ["任务拆解：把一句目标拆成可执行步骤", "网页研究：自动搜索、阅读和整理网页信息", "结果产出：把过程整理成报告、表格或结论", "云端执行：任务可以在后台继续推进", "多工具组合：把网页、文件和数据处理串在一起"],
-    activityEvidence: "Manus 帮助中心价格页近期更新，官方博客发布 Manus 1.6，仍处活跃迭代。",
+    activityEvidence: "Manus 帮助中心 2026 年公开 Basic/Plus/Pro 会员和 credits 口径，官方博客仍在发布版本更新。",
     workflowModel: "通用任务委托，Agent 在云端执行研究、网页任务、文件产出等。",
     workflowSteps: ["用户提交通用任务", "Agent 在云端拆解计划", "调用网页和文件工具", "异步推进任务", "交付研究或文件结果"],
     coreCapabilities: ["通用 Agent", "网页研究", "任务产出", "异步执行", "多工具工作流"],

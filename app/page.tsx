@@ -48,14 +48,14 @@ const githubScreenshotSlugs: Record<string, string> = {
 
 const competitorLatestUpdates: Record<string, string> = {
   "DroidRun / Mobilerun": "最新更新：2026-05-07",
-  "Open-AutoGLM / AutoGLM-Phone-9B": "最新更新：2026-05-07",
+  "Open-AutoGLM / AutoGLM-Phone-9B": "最新更新：2026-03-06（代码）",
   Tasker: "最新更新：2026-02-05",
   "Automate by LlamaLab": "最新更新：2026（公开资料未精确到日）",
   "ChatGPT agent / Operator": "最新更新：2025-08",
   "Claude Computer Use": "最新更新：2025-01-24",
-  "Browser Use Cloud": "最新更新：2026-05-07",
+  "Browser Use Cloud": "最新更新：2026-05-06（代码）",
   Skyvern: "最新更新：2026-04-14",
-  Manus: "最新更新：2026（公开资料未精确到日）",
+  Manus: "最新更新：2026-05（官方帮助中心/博客）",
   "Vector AI Agent": "最新更新：2026（公开资料未精确到日）",
   Maestro: "最新更新：2026-05-07",
   "AirDroid Business": "最新更新：2026（公开资料未精确到日）",
@@ -66,35 +66,35 @@ const competitorLatestUpdates: Record<string, string> = {
 };
 
 const githubLatestUpdates: Record<string, string> = {
-  "bytedance/UI-TARS-desktop": "最新更新：2026-05-07",
-  "bytedance/UI-TARS": "最新更新：2026-05-07",
-  "xlang-ai/OpenCUA": "最新更新：2026-05-06",
-  "OpenBMB/AgentCPM-GUI": "最新更新：2026-05-07",
-  "stepfun-ai/gelab-zero": "最新更新：2026-05-05",
-  "trycua/cua": "最新更新：2026-05-07",
-  "simular-ai/Agent-S": "最新更新：2026-05-07",
-  "google-research/android_world": "最新更新：2026-05-07",
-  "showlab/ShowUI": "最新更新：2026-05-07",
-  "zai-org/CogAgent": "最新更新：2026-04-29",
-  "browser-use/browser-use": "最新更新：2026-05-07",
+  "bytedance/UI-TARS-desktop": "代码更新：2026-04-29",
+  "bytedance/UI-TARS": "代码更新：2026-01-27",
+  "xlang-ai/OpenCUA": "代码更新：2026-02-04",
+  "OpenBMB/AgentCPM-GUI": "代码更新：2026-01-11",
+  "stepfun-ai/gelab-zero": "代码更新：2026-04-29",
+  "trycua/cua": "代码更新：2026-05-08",
+  "simular-ai/Agent-S": "代码更新：2026-02-21",
+  "google-research/android_world": "代码更新：2026-04-09",
+  "showlab/ShowUI": "代码更新：2026-04-24",
+  "zai-org/CogAgent": "代码更新：2025-04-04",
+  "browser-use/browser-use": "代码更新：2026-05-06",
   "droidrun/mobilerun": "最新更新：2026-05-07",
-  "zai-org/Open-AutoGLM": "最新更新：2026-05-07",
-  "Westlake-AGI-Lab/AppAgentX": "最新更新：2026-05-04",
-  "ui-voyager/UI-Voyager": "最新更新：2026-04-30",
-  "memohai/Autofish": "最新更新：2026-05-07",
-  "IPADS-SAI/MobiAgent": "最新更新：2026-05-06",
-  "X-PLUG/MobileAgent": "最新更新：2026-05-07"
+  "zai-org/Open-AutoGLM": "代码更新：2026-03-06",
+  "Westlake-AGI-Lab/AppAgentX": "代码更新：2025-04-15",
+  "ui-voyager/UI-Voyager": "代码更新：2026-04-03",
+  "memohai/Autofish": "代码更新：2026-05-03",
+  "IPADS-SAI/MobiAgent": "代码更新：2026-04-21",
+  "X-PLUG/MobileAgent": "代码更新：2026-04-14"
 };
 
 const systemPhoneLatestUpdates: Record<string, string> = {
-  "豆包手机助手 / nubia M153": "最新更新：2026-Q1（承诺周期）",
-  "荣耀 YOYO 智能体": "最新更新：2025-10",
+  "豆包手机助手 / nubia M153": "最新更新：2026-04（首批售罄）",
+  "荣耀 YOYO 智能体": "最新更新：2026-04",
   "小米超级小爱": "最新更新：2025-12",
   "OPPO 小布助手": "最新更新：2025-08",
   "vivo 蓝心小 V": "最新更新：2025-06",
   华为小艺: "最新更新：2025-08",
-  "Google Gemini / Samsung Galaxy AI": "最新更新：2025（公开资料未精确到日）",
-  "Apple Intelligence / Siri App Intents": "最新更新：2025（公开资料未精确到日）"
+  "Google Gemini / Samsung Galaxy AI": "最新更新：2026（官网仍在推）",
+  "Apple Intelligence / Siri App Intents": "最新更新：2026-05"
 };
 
 const systemPhoneScreenshotSlugs: Record<string, string> = {
@@ -176,27 +176,29 @@ export default function Home() {
         </div>
 
         <div className="matrix-toolbar" aria-label="竞品筛选">
-          <div className="filter-group">
-            <span>赛道</span>
-            <div className="filters">
-              {(["全部", ...categories] as const).map((category) => (
-                <button className={activeCategory === category ? "active" : ""} key={category} onClick={() => setActiveCategory(category)}>
-                  {category}
-                </button>
-              ))}
+          <div className="toolbar-filters">
+            <div className="filter-group">
+              <span>赛道</span>
+              <div className="filters">
+                {(["全部", ...categories] as const).map((category) => (
+                  <button className={activeCategory === category ? "active" : ""} key={category} onClick={() => setActiveCategory(category)}>
+                    {category}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="filter-group">
+              <span>收费</span>
+              <div className="filters compact">
+                {(["全部", "开源/免费", "订阅", "按量", "企业定制", "一次性购买"] as const).map((price) => (
+                  <button className={activePrice === price ? "active" : ""} key={price} onClick={() => setActivePrice(price)}>
+                    {price}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="filter-group">
-            <span>收费</span>
-            <div className="filters compact">
-              {(["全部", "开源/免费", "订阅", "按量", "企业定制", "一次性购买"] as const).map((price) => (
-                <button className={activePrice === price ? "active" : ""} key={price} onClick={() => setActivePrice(price)}>
-                  {price}
-                </button>
-              ))}
-            </div>
-          </div>
-          <strong>{filtered.length} / {competitors.length}</strong>
+          <strong><span>{filtered.length}</span><small>/ {competitors.length}</small></strong>
         </div>
 
         <div className="table-shell">
@@ -338,7 +340,6 @@ export default function Home() {
                 <th>产品</th>
                 <th>产品简介</th>
                 <th>技术方案</th>
-                <th>优劣势</th>
                 <th>商业模式/活跃证据</th>
               </tr>
             </thead>
@@ -395,25 +396,22 @@ export default function Home() {
                     </div>
                   </td>
                   <td>
-                    <div className="pros-cons-cell">
-                      <div>
-                        <span className="cell-kicker positive">优势</span>
-                        <ul className="table-list positive">
-                          {item.strengths.map((text) => <li key={text}>{text}</li>)}
-                        </ul>
-                      </div>
-                      <div>
-                        <span className="cell-kicker negative">短板</span>
-                        <ul className="table-list negative">
-                          {item.weaknesses.map((text) => <li key={text}>{text}</li>)}
-                        </ul>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
                     <div className="pricing-stack github-status">
                       <strong>{item.pricing}</strong>
                       <b>{item.activityEvidence}</b>
+                      <span>{item.commercialModel}</span>
+                      <div className="news-strip">
+                        <span className="cell-kicker">最新动向</span>
+                        <div className="news-list">
+                          {item.latestSignals.map((signal) => (
+                            <article className="news-item" key={`${signal.date}-${signal.title}`}>
+                              <time>{signal.date}</time>
+                              <p>{signal.title}</p>
+                              <em>{signal.source}</em>
+                            </article>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </td>
                 </tr>
