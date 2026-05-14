@@ -297,6 +297,9 @@ export default function Home() {
           <div className="hero-copy">
             <div className="eyebrow">截至 {reportDate} · 全球 + 中国市场</div>
             <h1>好麦 GUI Agent 竞品分析</h1>
+            <div className="hero-nav-links">
+              <a className="btn btn-ghost" href="/changelog">📋 更新日志</a>
+            </div>
           </div>
         </div>
       </section>
