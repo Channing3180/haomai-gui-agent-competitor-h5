@@ -35,6 +35,10 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "硬件试水 + 系统级能力合作。用户实际付费买的是 nubia M153 工程样机，豆包手机助手暂未作为独立 App 或 SaaS 单独收费；商业化关键在后续与手机厂商的系统级预装、硬件分成或生态合作。",
     activityEvidence: "2025-12 发布技术预览版，2026 年继续围绕 MWC 展示、首批售罄和正式版传闻发酵。",
     latestSignals: [
+      { date: "2026-05-11", title: "新浪财经", source: "新浪财经" },
+      { date: "2025-12-01", title: "品玩", source: "品玩" },
+      { date: "2025-12-03", title: "证券时报", source: "证券时报" },
+
       { date: "2026-04", title: "首批 F 码/货源售罄，官方称后续销售进展会在社区或公众号同步。", source: "豆包手机官方声明转载 / TechWeb" },
       { date: "2026-03", title: "nubia M153 搭载豆包手机助手在 MWC 2026 展示，被中兴包装为 AI-native phone。", source: "ZTE / PR Newswire" },
       { date: "2026-01", title: "行业消息称正式版项目推进，仍可能与中兴合作，但时间和量产节奏未被官网确认。", source: "热点科技等媒体" }
@@ -55,6 +59,10 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "硬件/系统卖点。YOYO 是荣耀 MagicOS 和荣耀终端的系统能力，不单独向用户订阅收费；它更像提升手机、PC 等硬件竞争力和生态粘性的入口。",
     activityEvidence: "2026-04 荣耀 YOYO 接入 DeepSeek-V4，并扩展到 YOYO Claw 终端侧智能体叙事。",
     latestSignals: [
+      { date: "2026-05-12", title: "热点科技", source: "热点科技" },
+      { date: "2026-04-30", title: "新京报", source: "新京报" },
+      { date: "2026-05-09", title: "新浪财经", source: "新浪财经" },
+
       { date: "2026-04", title: "YOYO 接入 DeepSeek-V4，官方口径强调更强性能、更长上下文和更高推理效率。", source: "荣耀官方消息转载 / IT之家 / 快科技" },
       { date: "2026-04", title: "荣耀发布 YOYO Claw 终端侧 AI 智能体技术，首发搭载 MagicBook 系列。", source: "荣耀技术沟通会转载 / 新浪科技" },
       { date: "2025-10", title: "Magic8 系列强化 YOYO Agent 和 3000+ 场景自动执行叙事。", source: "荣耀发布会报道" }
@@ -75,6 +83,10 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "生态硬件增值。超级小爱随小米澎湃 OS、小米手机和人车家设备提供，不是独立收费产品；价值主要体现在提升设备体验、IoT 控制频次和小米生态留存。",
     activityEvidence: "2025-12 小米在合作伙伴大会披露超级小爱“一步直达”支持 100 个常用应用、3000+ 能力。",
     latestSignals: [
+      { date: "2026-05-12", title: "新浪财经", source: "新浪财经" },
+      { date: "2026-05-14", title: "光通信Pro", source: "光通信Pro" },
+      { date: "2026-05-06", title: "搜狐网", source: "搜狐网" },
+
       { date: "2025-12", title: "超级小爱“一步直达”支持 100 个常用应用和 3000+ 能力，可操控订票、点餐、预约等场景。", source: "小米合作伙伴大会报道 / IT之家" },
       { date: "2025-12", title: "澎湃 OS 3 超级岛支持 60+ 应用、75+ 场景，和超级小爱共同服务人车家生态。", source: "小米合作伙伴大会报道" },
       { date: "2025-08", title: "澎湃 OS 3 发布后，小米持续把系统入口、应用模板和多端展示作为 AI 助手落地方式。", source: "小米官方/媒体报道" }
@@ -95,6 +107,10 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "系统能力 + 终端生态。小布作为 ColorOS 系统助手随 OPPO/一加设备提供，面向消费者未见独立订阅；商业价值在手机差异化、云端服务使用和端侧 AI 能力沉淀。",
     activityEvidence: "OPPO 官方 AI 页面显示 2025.8 小布月活近 1.7 亿，2025 年持续升级 AI 战略。",
     latestSignals: [
+      { date: "2025-10-15", title: "新浪财经", source: "新浪财经" },
+      { date: "2025-07-01", title: "品玩", source: "品玩" },
+      { date: "2025-07-26", title: "OPPO", source: "OPPO" },
+
       { date: "2025-08", title: "OPPO 官方披露小布助手月活接近 1.7 亿，继续强化系统级 AI 助手入口。", source: "OPPO AI 官网" },
       { date: "2025", title: "小布深度执行上线，重点放在自动规划、检索、整理和生成报告。", source: "OPPO AI 官网" },
       { date: "2025", title: "OPPO 把安第斯大模型、端侧 MoE 和 ColorOS 系统服务作为小布 AI 的技术底座。", source: "OPPO 官方资料" }
@@ -115,6 +131,10 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "系统预装能力。蓝心小 V 随 vivo / OriginOS 提供，消费者不单独付费；它更多承担系统 AI 入口、搜索/创作/问答和智能体能力展示。",
     activityEvidence: "2025-06 OriginOS 5 全系支持蓝心小 V 接入 DeepSeek-R1 最新版。",
     latestSignals: [
+      { date: "2025-10-14", title: "极客公园", source: "极客公园" },
+      { date: "2025-10-11", title: "DoNews", source: "DoNews" },
+      { date: "2025-10-10", title: "新浪财经", source: "新浪财经" },
+
       { date: "2025-06", title: "OriginOS 5 全系机型支持蓝心小 V 接入 DeepSeek-R1 最新版。", source: "OriginOS 官方微博转载 / IT之家 / DoNews" },
       { date: "2025-02", title: "vivo 上线满血版 DeepSeek-R1，蓝心小 V 支持深度思考、联网搜索和作业助手。", source: "OriginOS 官方微博转载 / TOM 科技" },
       { date: "2025", title: "公开信息仍以问答、写作、搜索和智能体入口为主，缺少跨 App 点击执行的强证据。", source: "vivo 官方支持页及媒体互证" }
@@ -135,6 +155,10 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "鸿蒙生态入口。小艺随华为设备、HarmonyOS 和鸿蒙服务提供，不单独按助手收费；商业价值主要来自设备生态、元服务分发和鸿蒙原生应用能力调用。",
     activityEvidence: "2024-10 HarmonyOS NEXT 发布，2025-02 小艺接入 DeepSeek-R1，2025-08 全新小艺众测升级。",
     latestSignals: [
+      { date: "2026-05-14", title: "驱动之家", source: "驱动之家" },
+      { date: "2026-05-14", title: "中华网", source: "中华网" },
+      { date: "2026-04-20", title: "新华网", source: "新华网" },
+
       { date: "2025-08", title: "全新小艺众测升级，继续强化识屏、问答、创作和系统服务。", source: "华为消费者业务/媒体报道" },
       { date: "2025-02", title: "小艺 App 接入 DeepSeek-R1，强化智能体广场和复杂问答能力。", source: "华为/媒体报道" },
       { date: "2024-10", title: "HarmonyOS NEXT 发布，华为把原生智能、元服务和设备互联作为小艺系统能力底座。", source: "华为官方新闻" }
@@ -155,6 +179,10 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "免费基础入口 + 高级订阅/设备权益。基础 Gemini/Android 助手能力随系统和 Google 服务提供；更高模型、容量或高级 AI 功能可能归入 Google AI 订阅或设备权益。",
     activityEvidence: "Google 官方 Gemini Utilities 文档仍在维护，Samsung Galaxy AI 继续把 Gemini 作为跨应用动作入口。",
     latestSignals: [
+      { date: "2026-05-11", title: "新浪财经", source: "新浪财经" },
+      { date: "2026-02-26", title: "cnBeta.COM", source: "cnBeta.COM" },
+      { date: "2026-02-27", title: "观察者", source: "观察者" },
+
       { date: "2026", title: "Android Galaxy Gemini 官网继续主推 Gemini 与 Galaxy 手机的跨应用体验。", source: "Android 官方页面" },
       { date: "2025", title: "Gemini Utilities 支持打开 App、控制闹钟/计时器、媒体和通知等系统动作。", source: "Google 官方帮助" },
       { date: "2025", title: "Galaxy S25 公开演示 seamless actions，强调搜索信息并发送消息等跨应用链路。", source: "Samsung / Google 官方资料" }
@@ -175,6 +203,10 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "硬件/系统能力。Apple Intelligence 和 Siri 随兼容设备与系统提供，不单独按助手收费；App Intents 是开发者接入系统入口的技术框架，商业价值回到 iPhone/Mac 设备生态。",
     activityEvidence: "Apple Developer 文档仍标注个人上下文、屏幕感知和 in-app actions 为未来软件更新；2026 年仍面临 Siri 延期和诉讼压力。",
     latestSignals: [
+      { date: "2026-05-03", title: "17173", source: "17173" },
+      { date: "2025-08-12", title: "爱范儿", source: "爱范儿" },
+      { date: "2025-08-13", title: "极客公园", source: "极客公园" },
+
       { date: "2026-05", title: "Apple 因 Siri / Apple Intelligence 延迟相关诉讼达成 2.5 亿美元和解，暴露承诺与落地节奏风险。", source: "The Verge / TechRadar / Tom's Guide" },
       { date: "2026", title: "Apple Developer 文档仍写明 Siri 的个人上下文、屏幕感知和 App 内动作处于开发中。", source: "Apple Developer Documentation" },
       { date: "2025-2026", title: "App Intents 继续作为 Apple Intelligence 调用第三方 App 动作的核心接口，而非通用屏幕点击方案。", source: "Apple Developer Documentation" }
