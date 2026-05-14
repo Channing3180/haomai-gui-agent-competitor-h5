@@ -42,7 +42,7 @@ export type Competitor = {
   lastChecked: string;
 };
 
-export const reportDate = "2026-05-08";
+export const reportDate = "2026-05-14";
 
 export const competitors: Competitor[] = [
   {
