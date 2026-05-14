@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { categories, competitors, reportDate, traditionalAutomationCompetitors, type Competitor, type CompetitorCategory, type PricingModel } from "@/data/competitors";
 import { githubGuiProjects, type GithubGuiProject } from "@/data/github-projects";
 import { systemPhoneAgents, type SystemPhoneAgent } from "@/data/system-phone-agents";
+import { changelog, type ChangeEntry, type ChangeType } from "@/data/changelog";
 
 const screenshotSlugs: Record<string, string> = {
   "DroidRun / Mobilerun": "droidrun-mobilerun",
@@ -821,6 +822,50 @@ export default function Home() {
               ))}
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <section className="section history-section">
+        <div className="matrix-head">
+          <div>
+            <span>Update History</span>
+            <h2>更新历史</h2>
+          </div>
+          <a className="btn btn-ghost history-more-link" href="/changelog">
+            查看全部 →
+          </a>
+        </div>
+        <div className="history-timeline">
+          {(() => {
+            const recent = [...changelog].sort((a, b) => b.timestamp - a.timestamp).slice(0, 15);
+            const byWeek = new Map<string, ChangeEntry[]>();
+            recent.forEach(e => {
+              if (!byWeek.has(e.week)) byWeek.set(e.week, []);
+              byWeek.get(e.week)!.push(e);
+            });
+            const typeIcon: Record<ChangeType, string> = {
+              stars_change: "⭐", code_update: "🔵", new_signal: "🟣",
+              activity_update: "📝", pricing_change: "🟠", new_item: "🟢", screenshot_updated: "📸",
+            };
+            return Array.from(byWeek.entries()).map(([week, entries]) => (
+              <div key={week} className="history-week">
+                <div className="history-week-label">{week}</div>
+                {entries.map((entry, i) => (
+                  <div key={i} className="history-item">
+                    <span className="history-icon">{typeIcon[entry.type] || "📌"}</span>
+                    <div className="history-content">
+                      <span className="history-target">{entry.target}</span>
+                      <span className="history-summary">{entry.summary}</span>
+                    </div>
+                    <span className="history-date">{entry.date}</span>
+                  </div>
+                ))}
+              </div>
+            ));
+          })()}
+          {changelog.length === 0 && (
+            <div className="history-empty">暂无更新记录</div>
+          )}
         </div>
       </section>
 
