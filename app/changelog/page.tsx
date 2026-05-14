@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { changelog, type ChangeEntry, type ChangeType } from "@/data/changelog";
 import { reportDate } from "@/data/competitors";
 
@@ -79,9 +80,9 @@ export default function ChangelogPage() {
             <h1>竞品更新日志</h1>
             <p>记录所有竞品的 GitHub Stars 变化、代码提交、新闻动态和关键事件。</p>
             <div className="hero-actions">
-              <a className="btn btn-secondary" href="/">
+              <Link className="btn btn-secondary" href="/">
                 ← 返回竞品分析总览
-              </a>
+              </Link>
             </div>
           </div>
         </div>
