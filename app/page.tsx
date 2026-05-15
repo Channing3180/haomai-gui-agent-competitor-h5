@@ -67,35 +67,35 @@ const competitorLatestUpdates: Record<string, string> = {
 };
 
 const githubLatestUpdates: Record<string, string> = {
-  "bytedance/UI-TARS-desktop": "代码更新：2026-04-29",
-  "bytedance/UI-TARS": "代码更新：2026-01-27",
-  "xlang-ai/OpenCUA": "代码更新：2026-02-04",
-  "OpenBMB/AgentCPM-GUI": "代码更新：2026-01-11",
-  "stepfun-ai/gelab-zero": "代码更新：2026-04-29",
-  "trycua/cua": "代码更新：2026-05-08",
-  "simular-ai/Agent-S": "代码更新：2026-02-21",
-  "google-research/android_world": "代码更新：2026-04-09",
-  "showlab/ShowUI": "代码更新：2026-04-24",
-  "zai-org/CogAgent": "代码更新：2025-04-04",
-  "browser-use/browser-use": "代码更新：2026-05-06",
-  "droidrun/mobilerun": "最新更新：2026-05-07",
-  "zai-org/Open-AutoGLM": "代码更新：2026-03-06",
-  "Westlake-AGI-Lab/AppAgentX": "代码更新：2025-04-15",
-  "ui-voyager/UI-Voyager": "代码更新：2026-04-03",
-  "memohai/Autofish": "代码更新：2026-05-03",
-  "IPADS-SAI/MobiAgent": "代码更新：2026-04-21",
-  "X-PLUG/MobileAgent": "代码更新：2026-04-14"
+  "bytedance/UI-TARS-desktop": "GitHub pushed_at: 2026-05-15；updated_at: 2026-05-15。",
+  "bytedance/UI-TARS": "GitHub pushed_at: 2026-01-27；updated_at: 2026-05-15。",
+  "xlang-ai/OpenCUA": "GitHub pushed_at: 2026-02-04；updated_at: 2026-05-13。",
+  "OpenBMB/AgentCPM-GUI": "GitHub pushed_at: 2026-01-11；updated_at: 2026-05-13。",
+  "stepfun-ai/gelab-zero": "GitHub pushed_at: 2026-05-11；updated_at: 2026-05-14。",
+  "trycua/cua": "GitHub pushed_at: 2026-05-14；updated_at: 2026-05-15。",
+  "simular-ai/Agent-S": "GitHub pushed_at: 2026-05-13；updated_at: 2026-05-15。",
+  "google-research/android_world": "GitHub pushed_at: 2026-04-09；updated_at: 2026-05-15。",
+  "showlab/ShowUI": "GitHub pushed_at: 2026-04-24；updated_at: 2026-05-13。",
+  "zai-org/CogAgent": "GitHub pushed_at: 2025-04-04；updated_at: 2026-05-14。",
+  "browser-use/browser-use": "GitHub pushed_at: 2026-05-15；updated_at: 2026-05-15。",
+  "droidrun/mobilerun": "GitHub pushed_at: 2026-05-14；updated_at: 2026-05-15。",
+  "zai-org/Open-AutoGLM": "GitHub pushed_at: 2026-03-06；updated_at: 2026-05-14。",
+  "Westlake-AGI-Lab/AppAgentX": "GitHub pushed_at: 2025-04-15；updated_at: 2026-05-14。",
+  "ui-voyager/UI-Voyager": "GitHub pushed_at: 2026-04-03；updated_at: 2026-05-11。",
+  "memohai/Autofish": "GitHub pushed_at: 2026-05-12；updated_at: 2026-05-15。",
+  "IPADS-SAI/MobiAgent": "GitHub pushed_at: 2026-05-15；updated_at: 2026-05-14。",
+  "X-PLUG/MobileAgent": "GitHub pushed_at: 2026-05-14；updated_at: 2026-05-14。"
 };
 
 const systemPhoneLatestUpdates: Record<string, string> = {
-  "豆包手机助手 / nubia M153": "最新更新：2026-04（首批售罄）",
-  "荣耀 YOYO 智能体": "最新更新：2026-04",
-  "小米超级小爱": "最新更新：2025-12",
-  "OPPO 小布助手": "最新更新：2025-08",
-  "vivo 蓝心小 V": "最新更新：2025-06",
-  华为小艺: "最新更新：2025-08",
-  "Google Gemini / Samsung Galaxy AI": "最新更新：2026（官网仍在推）",
-  "Apple Intelligence / Siri App Intents": "最新更新：2026-05"
+  "豆包手机助手 / nubia M153": "最新更新：2025-12-02",
+  "荣耀 YOYO 智能体": "最新更新：2026-05-12",
+  小米超级小爱: "最新更新：2026-05-10",
+  "OPPO 小布助手": "最新更新：2025-07-01",
+  "vivo 蓝心小 V": "最新更新：2025-10-14",
+  华为小艺: "最新更新：2026-04-20",
+  "Google Gemini / Samsung Galaxy AI": "最新更新：2026-05-13",
+  "Apple Intelligence / Siri App Intents": "最新更新：2025-08-12"
 };
 
 const systemPhoneScreenshotSlugs: Record<string, string> = {
