@@ -731,4 +731,140 @@ export const changelog: ChangeEntry[] = [
     "week": "2026-05 W20",
     "date": "2026-05-15",
     "timestamp": 1778833332
-  },];
+  },{
+    "type": "code_update",
+    "target": "UI-TARS Desktop",
+    "summary": "UI-TARS Desktop 有新的代码提交 (2026-05-15)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860874
+},
+{
+    "type": "code_update",
+    "target": "UI-TARS",
+    "summary": "UI-TARS 有新的代码提交 (2026-01-27)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860877
+},
+{
+    "type": "code_update",
+    "target": "OpenCUA",
+    "summary": "OpenCUA 有新的代码提交 (2026-02-04)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860881
+},
+{
+    "type": "code_update",
+    "target": "GELab-Zero / STEP-GUI",
+    "summary": "GELab-Zero / STEP-GUI 有新的代码提交 (2026-05-11)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860897
+},
+{
+    "type": "code_update",
+    "target": "Cua",
+    "summary": "Cua 有新的代码提交 (2026-05-14)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860899
+},
+{
+    "type": "code_update",
+    "target": "Agent-S",
+    "summary": "Agent-S 有新的代码提交 (2026-05-13)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860906
+},
+{
+    "type": "code_update",
+    "target": "AndroidWorld",
+    "summary": "AndroidWorld 有新的代码提交 (2026-04-09)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860909
+},
+{
+    "type": "code_update",
+    "target": "ShowUI",
+    "summary": "ShowUI 有新的代码提交 (2026-04-24)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860911
+},
+{
+    "type": "code_update",
+    "target": "CogAgent",
+    "summary": "CogAgent 有新的代码提交 (2025-04-04)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860916
+},
+{
+    "type": "code_update",
+    "target": "AppAgentX",
+    "summary": "AppAgentX 有新的代码提交 (2025-04-15)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860917
+},
+{
+    "type": "code_update",
+    "target": "UI-Voyager",
+    "summary": "UI-Voyager 有新的代码提交 (2026-04-03)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860921
+},
+{
+    "type": "code_update",
+    "target": "Autofish",
+    "summary": "Autofish 有新的代码提交 (2026-05-12)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860924
+},
+{
+    "type": "code_update",
+    "target": "MobiAgent",
+    "summary": "MobiAgent 有新的代码提交 (2026-05-15)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860929
+},
+{
+    "type": "code_update",
+    "target": "Mobile-Agent",
+    "summary": "Mobile-Agent 有新的代码提交 (2026-05-14)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860937
+},
+{
+    "type": "code_update",
+    "target": "Browser Use",
+    "summary": "Browser Use 有新的代码提交 (2026-05-15)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860939
+},
+{
+    "type": "code_update",
+    "target": "Mobilerun",
+    "summary": "Mobilerun 有新的代码提交 (2026-05-14)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860945
+},
+{
+    "type": "code_update",
+    "target": "Open-AutoGLM",
+    "summary": "Open-AutoGLM 有新的代码提交 (2026-03-06)",
+    "week": "2026-05 W20",
+    "date": "2026-05-15",
+    "timestamp": 1778860947
+},
+];
