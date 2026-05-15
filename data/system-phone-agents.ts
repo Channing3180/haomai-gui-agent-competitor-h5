@@ -35,8 +35,8 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "硬件试水 + 系统级能力合作。用户实际付费买的是 nubia M153 工程样机，豆包手机助手暂未作为独立 App 或 SaaS 单独收费；商业化关键在后续与手机厂商的系统级预装、硬件分成或生态合作。",
     activityEvidence: "2025-12 发布技术预览版，2026 年继续围绕 MWC 展示、首批售罄和正式版传闻发酵。",
     latestSignals:[
-      { date: "2025-12-02", title: "DoNews", source: "首款豆包AI手机nubia M153售罄" },
-      { date: "2026-05-08", title: "新浪财经", source: "接棒谷歌、叫板苹果，OpenAI的AI手机要来了！" }
+      { date: "2025-12-02", title: "首款豆包AI手机nubia M153售罄", source: "DoNews" },
+      { date: "2026-05-08", title: "接棒谷歌、叫板苹果，OpenAI的AI手机要来了！", source: "新浪财经" }
     ]
   },
   {
@@ -54,10 +54,10 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "硬件/系统卖点。YOYO 是荣耀 MagicOS 和荣耀终端的系统能力，不单独向用户订阅收费；它更像提升手机、PC 等硬件竞争力和生态粘性的入口。",
     activityEvidence: "2026-04 荣耀 YOYO 接入 DeepSeek-V4，并扩展到 YOYO Claw 终端侧智能体叙事。",
     latestSignals:[
-      { date: "2026-05-12", title: "热点科技", source: "手机AI要变天了！荣耀YOYO率先接入Deepseek V4" },
-      { date: "2026-04-30", title: "新京报", source: "荣耀YOYO智能体携手蚂蚁阿福,健康服务一步直达" },
-      { date: "2026-04-17", title: "eu.36kr.com", source: "独家专访荣耀AI专家李向东：端侧AI方向未收敛，AI手机为最佳载体" },
-      { date: "2025-10-16", title: "新浪财经客户端", source: "从工具到搭子：荣耀MagicOS 10+YOYO智能体定义自进化AI原生手机" }
+      { date: "2026-05-12", title: "手机AI要变天了！荣耀YOYO率先接入Deepseek V4", source: "热点科技" },
+      { date: "2026-04-30", title: "荣耀YOYO智能体携手蚂蚁阿福,健康服务一步直达", source: "新京报" },
+      { date: "2026-04-17", title: "独家专访荣耀AI专家李向东：端侧AI方向未收敛，AI手机为最佳载体", source: "eu.36kr.com" },
+      { date: "2025-10-16", title: "从工具到搭子：荣耀MagicOS 10+YOYO智能体定义自进化AI原生手机", source: "新浪财经客户端" }
     ]
   },
   {
@@ -75,9 +75,9 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "生态硬件增值。超级小爱随小米澎湃 OS、小米手机和人车家设备提供，不是独立收费产品；价值主要体现在提升设备体验、IoT 控制频次和小米生态留存。",
     activityEvidence: "2025-12 小米在合作伙伴大会披露超级小爱“一步直达”支持 100 个常用应用、3000+ 能力。",
     latestSignals:[
-      { date: "2026-05-10", title: "新浪财经", source: "小爱同学怎么接入deepseek-太平洋IT百科手机版" },
-      { date: "2026-05-06", title: "搜狐网", source: "追剧不用碰遥控器 小米超级小爱新功能上线" },
-      { date: "2025-11-12", title: "TOM科技", source: "AI天才少女罗福莉官宣加入小米，小米汽车与小爱同学或有大升级" }
+      { date: "2026-05-10", title: "小爱同学怎么接入deepseek-太平洋IT百科手机版", source: "新浪财经" },
+      { date: "2026-05-06", title: "追剧不用碰遥控器 小米超级小爱新功能上线", source: "搜狐网" },
+      { date: "2025-11-12", title: "AI天才少女罗福莉官宣加入小米，小米汽车与小爱同学或有大升级", source: "TOM科技" }
     ]
   },
   {
@@ -95,10 +95,10 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "系统能力 + 终端生态。小布作为 ColorOS 系统助手随 OPPO/一加设备提供，面向消费者未见独立订阅；商业价值在手机差异化、云端服务使用和端侧 AI 能力沉淀。",
     activityEvidence: "OPPO 官方 AI 页面显示 2025.8 小布月活近 1.7 亿，2025 年持续升级 AI 战略。",
     latestSignals:[
-      { date: "2025-07-01", title: "品玩", source: "手机上的免费Manus来了！OPPO小布助手发布深度执行功能，可一键生成专业报告" },
-      { date: "2025-07-26", title: "OPPO", source: "OPPO 亮相 2025 世界人工智能大会，刷新端侧AI 性能上限| OPPO 官方网站" },
-      { date: "2026-05-13", title: "搜狐网", source: "2026年手机系统AI功能横评：ColorOS 16领衔，谁才是最强AI交互与助手体验？" },
-      { date: "2026-05-13", title: "凤凰网科技", source: "OPPO 新一代 ColorOS 16 正式版陆续开推，五月升级一览发布" }
+      { date: "2025-07-01", title: "手机上的免费Manus来了！OPPO小布助手发布深度执行功能，可一键生成专业报告", source: "品玩" },
+      { date: "2025-07-26", title: "OPPO 亮相 2025 世界人工智能大会，刷新端侧AI 性能上限| OPPO 官方网站", source: "OPPO" },
+      { date: "2026-05-13", title: "2026年手机系统AI功能横评：ColorOS 16领衔，谁才是最强AI交互与助手体验？", source: "搜狐网" },
+      { date: "2026-05-13", title: "OPPO 新一代 ColorOS 16 正式版陆续开推，五月升级一览发布", source: "凤凰网科技" }
     ]
   },
   {
@@ -116,9 +116,9 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "系统预装能力。蓝心小 V 随 vivo / OriginOS 提供，消费者不单独付费；它更多承担系统 AI 入口、搜索/创作/问答和智能体能力展示。",
     activityEvidence: "2025-06 OriginOS 5 全系支持蓝心小 V 接入 DeepSeek-R1 最新版。",
     latestSignals:[
-      { date: "2025-10-14", title: "极客公园", source: "vivo 智能助手「蓝心小 V」再升级，豆包大模型让 AI 原生体验拉满" },
-      { date: "2025-10-11", title: "DoNews", source: "“隐形”科技，“放大”体验：vivo重新定义下一代操作系统" },
-      { date: "2025-10-10", title: "爱搞机", source: "“动态透彩”+本地AI，vivo OriginOS 6更新汇总：新锁屏、新动效" }
+      { date: "2025-10-14", title: "vivo 智能助手「蓝心小 V」再升级，豆包大模型让 AI 原生体验拉满", source: "极客公园" },
+      { date: "2025-10-11", title: "“隐形”科技，“放大”体验：vivo重新定义下一代操作系统", source: "DoNews" },
+      { date: "2025-10-10", title: "“动态透彩”+本地AI，vivo OriginOS 6更新汇总：新锁屏、新动效", source: "爱搞机" }
     ]
   },
   {
@@ -136,9 +136,9 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "鸿蒙生态入口。小艺随华为设备、HarmonyOS 和鸿蒙服务提供，不单独按助手收费；商业价值主要来自设备生态、元服务分发和鸿蒙原生应用能力调用。",
     activityEvidence: "2024-10 HarmonyOS NEXT 发布，2025-02 小艺接入 DeepSeek-R1，2025-08 全新小艺众测升级。",
     latestSignals:[
-      { date: "2026-04-20", title: "新华网", source: "华为Pura双旗舰登场，首发HarmonyOS 6.1与伴随式AI" },
-      { date: "2026-05-14", title: "驱动之家", source: "华为Pura X Max上手半个月 小艺伴随式AI真是把主动服务玩明白了" },
-      { date: "2026-05-13", title: "xw.qq.com", source: "华为 MateBook 14 / Pro 笔记本推 HarmonyOS 6.1.0.117SP68 版本" }
+      { date: "2026-04-20", title: "华为Pura双旗舰登场，首发HarmonyOS 6.1与伴随式AI", source: "新华网" },
+      { date: "2026-05-14", title: "华为Pura X Max上手半个月 小艺伴随式AI真是把主动服务玩明白了", source: "驱动之家" },
+      { date: "2026-05-13", title: "华为 MateBook 14 / Pro 笔记本推 HarmonyOS 6.1.0.117SP68 版本", source: "xw.qq.com" }
     ]
   },
   {
@@ -156,10 +156,10 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "免费基础入口 + 高级订阅/设备权益。基础 Gemini/Android 助手能力随系统和 Google 服务提供；更高模型、容量或高级 AI 功能可能归入 Google AI 订阅或设备权益。",
     activityEvidence: "Google 官方 Gemini Utilities 文档仍在维护，Samsung Galaxy AI 继续把 Gemini 作为跨应用动作入口。",
     latestSignals:[
-      { date: "2026-05-13", title: "极客公园", source: "谷歌在安卓上全面强化Gemini AI；宇树发布全球首款载人机甲，售价390 万元；追觅高管回应「崩老头」" },
-      { date: "2026-05-12", title: "新浪财经客户端", source: "谷歌将Gemini植入安卓底层：打造跨设备“智能系统”，苹果WWDC面临压力" },
-      { date: "2026-05-15", title: "新浪财经", source: "约 3.6GB：三星已向 Galaxy S26 系列手机推送首个 One UI 9 固件" },
-      { date: "2026-05-14", title: "中华网", source: "焕新界面 AI升级 三星向更多Galaxy设备推送Samsung One UI 8.5更新" }
+      { date: "2026-05-13", title: "谷歌在安卓上全面强化Gemini AI；宇树发布全球首款载人机甲，售价390 万元；追觅高管回应「崩老头」", source: "极客公园" },
+      { date: "2026-05-12", title: "谷歌将Gemini植入安卓底层：打造跨设备“智能系统”，苹果WWDC面临压力", source: "新浪财经客户端" },
+      { date: "2026-05-15", title: "约 3.6GB：三星已向 Galaxy S26 系列手机推送首个 One UI 9 固件", source: "新浪财经" },
+      { date: "2026-05-14", title: "焕新界面 AI升级 三星向更多Galaxy设备推送Samsung One UI 8.5更新", source: "中华网" }
     ]
   },
   {
@@ -177,8 +177,8 @@ export const systemPhoneAgents: SystemPhoneAgent[] = [
     commercialModel: "硬件/系统能力。Apple Intelligence 和 Siri 随兼容设备与系统提供，不单独按助手收费；App Intents 是开发者接入系统入口的技术框架，商业价值回到 iPhone/Mac 设备生态。",
     activityEvidence: "Apple Developer 文档仍标注个人上下文、屏幕感知和 in-app actions 为未来软件更新；2026 年仍面临 Siri 延期和诉讼压力。",
     latestSignals:[
-      { date: "2025-08-12", title: "爱范儿", source: "「有嘴就行！」明年的新 Siri 可以让你真正解放双手的使用 iPhone" },
-      { date: "2026-05-03", title: "17173", source: "继“液态玻璃”之后：苹果 iOS 27 将重心转向 AI，Siri 迎来独立 App 并将深度整合到相机应用中" }
+      { date: "2025-08-12", title: "「有嘴就行！」明年的新 Siri 可以让你真正解放双手的使用 iPhone", source: "爱范儿" },
+      { date: "2026-05-03", title: "继“液态玻璃”之后：苹果 iOS 27 将重心转向 AI，Siri 迎来独立 App 并将深度整合到相机应用中", source: "17173" }
     ]
   }
 ];
