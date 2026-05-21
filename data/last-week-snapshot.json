@@ -1,108 +1,70 @@
 {
-  "bytedance/UI-TARS-desktop": {
-    "stars": 34049,
-    "stars_display": "34.0k+",
-    "pushed_at": "2026-05-15",
-    "updated_at": "2026-05-15"
-  },
-  "bytedance/UI-TARS": {
-    "stars": 10570,
-    "stars_display": "10.6k+",
-    "pushed_at": "2026-01-27",
-    "updated_at": "2026-05-15"
-  },
-  "xlang-ai/OpenCUA": {
-    "stars": 760,
-    "stars_display": "760",
-    "pushed_at": "2026-02-04",
-    "updated_at": "2026-05-13"
-  },
-  "OpenBMB/AgentCPM-GUI": {
-    "stars": "N/A",
-    "pushed_at": "N/A"
-  },
-  "stepfun-ai/gelab-zero": {
-    "stars": 2167,
-    "stars_display": "2.2k+",
-    "pushed_at": "2026-05-11",
-    "updated_at": "2026-05-15"
-  },
-  "trycua/cua": {
-    "stars": 16756,
-    "stars_display": "16.8k+",
-    "pushed_at": "2026-05-14",
-    "updated_at": "2026-05-15"
-  },
-  "simular-ai/Agent-S": {
-    "stars": 11320,
-    "stars_display": "11.3k+",
-    "pushed_at": "2026-05-13",
-    "updated_at": "2026-05-15"
-  },
-  "google-research/android_world": {
-    "stars": 767,
-    "stars_display": "767",
-    "pushed_at": "2026-04-09",
-    "updated_at": "2026-05-15"
-  },
-  "showlab/ShowUI": {
-    "stars": 1831,
-    "stars_display": "1.8k+",
-    "pushed_at": "2026-04-24",
-    "updated_at": "2026-05-13"
-  },
-  "zai-org/CogAgent": {
-    "stars": 1179,
-    "stars_display": "1.2k+",
-    "pushed_at": "2025-04-04",
-    "updated_at": "2026-05-14"
-  },
-  "Westlake-AGI-Lab/AppAgentX": {
-    "stars": 650,
-    "stars_display": "650",
-    "pushed_at": "2025-04-15",
-    "updated_at": "2026-05-14"
-  },
-  "ui-voyager/UI-Voyager": {
-    "stars": 68,
-    "stars_display": "68",
-    "pushed_at": "2026-04-03",
-    "updated_at": "2026-05-11"
-  },
-  "memohai/Autofish": {
-    "stars": 104,
-    "stars_display": "104",
-    "pushed_at": "2026-05-12",
-    "updated_at": "2026-05-15"
-  },
-  "IPADS-SAI/MobiAgent": {
-    "stars": 1825,
-    "stars_display": "1.8k+",
-    "pushed_at": "2026-05-15",
-    "updated_at": "2026-05-15"
-  },
-  "X-PLUG/MobileAgent": {
-    "stars": 8668,
-    "stars_display": "8.7k+",
-    "pushed_at": "2026-05-14",
-    "updated_at": "2026-05-15"
-  },
-  "browser-use/browser-use": {
-    "stars": 94052,
-    "stars_display": "94.1k+",
-    "pushed_at": "2026-05-15",
-    "updated_at": "2026-05-15"
-  },
-  "droidrun/mobilerun": {
-    "stars": 8322,
-    "stars_display": "8.3k+",
-    "pushed_at": "2026-05-14",
-    "updated_at": "2026-05-15"
-  },
-  "zai-org/Open-AutoGLM": {
-    "stars": 25282,
-    "stars_display": "25.3k+",
-    "pushed_at": "2026-03-06",
-    "updated_at": "2026-05-15"
+  "snapshot_date": "2026-05-21",
+  "github_projects": {},
+  "system_phone_signals": {
+    "豆包手机助手 / nubia M153": [
+      "2026-05-11 新浪财经",
+      "2025-12-01 品玩",
+      "2025-12-03 证券时报",
+      "2026-04 首批 F 码/货源售罄，官方称后续销售进展会在社区或公众号同步。",
+      "2026-03 nubia M153 搭载豆包手机助手在 MWC 2026 展示，被中兴包装为 AI-native phone。",
+      "2026-01 行业消息称正式版项目推进，仍可能与中兴合作，但时间和量产节奏未被官网确认。"
+    ],
+    "荣耀 YOYO 智能体": [
+      "2026-05-12 热点科技",
+      "2026-04-30 新京报",
+      "2026-05-09 新浪财经",
+      "2026-04 YOYO 接入 DeepSeek-V4，官方口径强调更强性能、更长上下文和更高推理效率。",
+      "2026-04 荣耀发布 YOYO Claw 终端侧 AI 智能体技术，首发搭载 MagicBook 系列。",
+      "2025-10 Magic8 系列强化 YOYO Agent 和 3000+ 场景自动执行叙事。"
+    ],
+    "小米超级小爱": [
+      "2026-05-12 新浪财经",
+      "2026-05-14 光通信Pro",
+      "2026-05-06 搜狐网",
+      "2025-12 超级小爱“一步直达”支持 100 个常用应用和 3000+ 能力，可操控订票、点餐、预约等场景。",
+      "2025-12 澎湃 OS 3 超级岛支持 60+ 应用、75+ 场景，和超级小爱共同服务人车家生态。",
+      "2025-08 澎湃 OS 3 发布后，小米持续把系统入口、应用模板和多端展示作为 AI 助手落地方式。"
+    ],
+    "OPPO 小布助手": [
+      "2025-10-15 新浪财经",
+      "2025-07-01 品玩",
+      "2025-07-26 OPPO",
+      "2025-08 OPPO 官方披露小布助手月活接近 1.7 亿，继续强化系统级 AI 助手入口。",
+      "2025 小布深度执行上线，重点放在自动规划、检索、整理和生成报告。",
+      "2025 OPPO 把安第斯大模型、端侧 MoE 和 ColorOS 系统服务作为小布 AI 的技术底座。"
+    ],
+    "vivo 蓝心小 V": [
+      "2025-10-14 极客公园",
+      "2025-10-11 DoNews",
+      "2025-10-10 新浪财经",
+      "2025-06 OriginOS 5 全系机型支持蓝心小 V 接入 DeepSeek-R1 最新版。",
+      "2025-02 vivo 上线满血版 DeepSeek-R1，蓝心小 V 支持深度思考、联网搜索和作业助手。",
+      "2025 公开信息仍以问答、写作、搜索和智能体入口为主，缺少跨 App 点击执行的强证据。"
+    ],
+    "华为小艺": [
+      "2026-05-14 驱动之家",
+      "2026-05-14 中华网",
+      "2026-04-20 新华网",
+      "2025-08 全新小艺众测升级，继续强化识屏、问答、创作和系统服务。",
+      "2025-02 小艺 App 接入 DeepSeek-R1，强化智能体广场和复杂问答能力。",
+      "2024-10 HarmonyOS NEXT 发布，华为把原生智能、元服务和设备互联作为小艺系统能力底座。"
+    ],
+    "Google Gemini / Samsung Galaxy AI": [
+      "2026-05-11 新浪财经",
+      "2026-02-26 cnBeta.COM",
+      "2026-02-27 观察者",
+      "2026 Android Galaxy Gemini 官网继续主推 Gemini 与 Galaxy 手机的跨应用体验。",
+      "2025 Gemini Utilities 支持打开 App、控制闹钟/计时器、媒体和通知等系统动作。",
+      "2025 Galaxy S25 公开演示 seamless actions，强调搜索信息并发送消息等跨应用链路。"
+    ],
+    "Apple Intelligence / Siri App Intents": [
+      "2026-05-03 17173",
+      "2025-08-12 爱范儿",
+      "2025-08-13 极客公园",
+      "2026-05 Apple 因 Siri / Apple Intelligence 延迟相关诉讼达成 2.5 亿美元和解，暴露承诺与落地节奏风险。",
+      "2026 Apple Developer 文档仍写明 Siri 的个人上下文、屏幕感知和 App 内动作处于开发中。",
+      "2025-2026 App Intents 继续作为 Apple Intelligence 调用第三方 App 动作的核心接口，而非通用屏幕点击方案。"
+    ]
   }
 }
