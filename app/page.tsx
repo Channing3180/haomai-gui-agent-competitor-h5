@@ -241,6 +241,107 @@ async function openInDefaultBrowser(url: string) {
   }
 }
 
+// ── 本周更新组件（独立组件以便使用 useState） ──
+const typeIcon: Record<string, string> = {
+  stars_change: "⭐", code_update: "🔵", new_signal: "🟣",
+  activity_update: "📝", pricing_change: "🟠", new_item: "🟢", screenshot_updated: "📸",
+};
+
+function ThisWeekUpdates() {
+  const [showAll, setShowAll] = useState(false);
+  const latestWeek = changelog.length > 0 ? changelog[0].week : "";
+  const thisWeek = changelog.filter(e => e.week === latestWeek);
+  const keyEntries = thisWeek.filter(e => e.isKey);
+  const regularEntries = thisWeek.filter(e => !e.isKey);
+
+  if (thisWeek.length === 0) {
+    return (
+      <section className="section this-week-section">
+        <div className="matrix-head">
+          <div><span>This Week</span><h2>本周更新</h2></div>
+          <a className="btn btn-ghost" href="/changelog">查看全部 →</a>
+        </div>
+        <div className="this-week-empty">本周暂无更新</div>
+      </section>
+    );
+  }
+
+  const visibleRegular = showAll ? regularEntries : regularEntries.slice(0, 4);
+
+  return (
+    <section className="section this-week-section">
+      <div className="matrix-head">
+        <div><span>This Week</span><h2>本周更新</h2></div>
+        <a className="btn btn-ghost" href="/changelog">查看全部 →</a>
+      </div>
+      <div className="this-week-grid">
+        {/* 周摘要 */}
+        <div className="this-week-summary-bar">
+          本周共 <strong>{thisWeek.length}</strong> 条变更，其中 <strong>{keyEntries.length}</strong> 条为重点动态
+        </div>
+
+        {/* 重点条目 */}
+        {keyEntries.length > 0 && (
+          <div className="this-week-key">
+            <h3 className="this-week-key-header">🔥 重点</h3>
+            {keyEntries.map((entry, i) => (
+              <a
+                key={`key-${i}`}
+                className="this-week-key-item"
+                href={entry.sourceUrl || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => { if (!entry.sourceUrl) e.preventDefault(); }}
+              >
+                <div className="this-week-key-item-inner">
+                  <span className="this-week-key-icon">{typeIcon[entry.type] || "📌"}</span>
+                  <div className="this-week-key-body">
+                    <div className="this-week-key-target-row">
+                      <span className="this-week-key-target">{entry.target}</span>
+                      <span className="this-week-key-date">{entry.date}</span>
+                    </div>
+                    <span className="this-week-key-summary">{entry.summary}</span>
+                  </div>
+                  <span className="this-week-key-link-arrow">↗</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
+
+        {/* 其他动态（折叠） */}
+        {regularEntries.length > 0 && (
+          <div className="this-week-others">
+            <h3 className="this-week-others-header">🔍 其他动态（{regularEntries.length} 条）</h3>
+            {visibleRegular.map((entry, i) => (
+              <a
+                key={`other-${i}`}
+                className="this-week-other"
+                href={entry.sourceUrl || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => { if (!entry.sourceUrl) e.preventDefault(); }}
+              >
+                <span className="this-week-other-icon">{typeIcon[entry.type] || "📌"}</span>
+                <div className="this-week-other-body">
+                  <span className="this-week-other-target">{entry.target}</span>
+                  <span className="this-week-other-summary">{entry.summary}</span>
+                </div>
+                <span className="this-week-other-link-arrow">↗</span>
+              </a>
+            ))}
+            {!showAll && regularEntries.length > 4 && (
+              <button className="this-week-expand-btn" onClick={() => setShowAll(true)}>
+                展开查看剩余 {regularEntries.length - 4} 条
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<CompetitorCategory | "全部">("全部");
   const [activePrice, setActivePrice] = useState("全部");
@@ -305,83 +406,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 本周更新 ===== */}
-      <section className="section this-week-section">
-        <div className="matrix-head">
-          <div>
-            <span>This Week</span>
-            <h2>本周更新</h2>
-          </div>
-          <a className="btn btn-ghost" href="/changelog">
-            查看全部 →
-          </a>
-        </div>
-        {(() => {
-          const latestWeek = changelog.length > 0 ? changelog[0].week : "";
-          const thisWeek = changelog.filter(e => e.week === latestWeek);
-          const signals = thisWeek.filter(e => e.type === "new_signal").slice(0, 3);
-          const others = thisWeek.filter(e => e.type !== "new_signal").slice(0, 5);
-
-          if (thisWeek.length === 0) {
-            return <div className="this-week-empty">本周暂无更新</div>;
-          }
-
-          const typeIcon: Record<string, string> = {
-            stars_change: "⭐", code_update: "🔵", new_signal: "🟣",
-            activity_update: "📝", pricing_change: "🟠", new_item: "🟢", screenshot_updated: "📸",
-          };
-
-          return (
-            <div className="this-week-grid">
-              {signals.length > 0 && (
-                <div className="this-week-signals">
-                  <h3>📰 行业动态（{signals.length} 条）</h3>
-                  {signals.map((entry, i) => (
-                    <a
-                      key={`signal-${i}`}
-                      className="this-week-signal"
-                      href={entry.sourceUrl || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => {
-                        if (!entry.sourceUrl) { e.preventDefault(); }
-                      }}
-                    >
-                      <span className="this-week-signal-target">{entry.target}</span>
-                      <p className="this-week-signal-summary">{entry.summary}</p>
-                      <span className="this-week-signal-date">{entry.date}</span>
-                    </a>
-                  ))}
-                </div>
-              )}
-              {others.length > 0 && (
-                <div className="this-week-others">
-                  <h3>🔍 其他动态（{others.length} 条）</h3>
-                  {others.map((entry, i) => (
-                    <a
-                      key={`other-${i}`}
-                      className="this-week-other"
-                      href={entry.sourceUrl || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => {
-                        if (!entry.sourceUrl) { e.preventDefault(); }
-                      }}
-                    >
-                      <span className="this-week-other-icon">{typeIcon[entry.type] || "📌"}</span>
-                      <div className="this-week-other-body">
-                        <span className="this-week-other-target">{entry.target}</span>
-                        <span className="this-week-other-summary">{entry.summary}</span>
-                      </div>
-                      <span className="this-week-other-date">{entry.date}</span>
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          );
-        })()}
-      </section>
+      <ThisWeekUpdates />
 
       <section className="section matrix-section">
         <div className="matrix-head">

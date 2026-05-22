@@ -26,7 +26,9 @@ interface AggregatedEntry {
 interface WeekGroup {
   week: string;
   entries: AggregatedEntry[];
+  keyEntries: AggregatedEntry[];  // entries that have at least one key child or primary is key
   totalCount: number; // total raw entries (for "X 条变更")
+  keyCount: number;   // number of key entries
 }
 
 // Priority: lower = more important
@@ -87,7 +89,24 @@ function aggregateByWeek(entries: ChangeEntry[]): WeekGroup[] {
       aggregated.push({ primary, children, target });
     }
 
-    result.push({ week, entries: aggregated, totalCount: weekEntries.length });
+    // Separate key entries (primary or any child is key) from regular entries
+    const keyEntries = aggregated.filter(
+      (a) => a.primary.isKey || a.children.some((c) => c.isKey)
+    );
+    const regularEntries = aggregated.filter(
+      (a) => !a.primary.isKey && !a.children.some((c) => c.isKey)
+    );
+
+    // Key entries first, then regular entries
+    const sorted = [...keyEntries, ...regularEntries];
+
+    result.push({
+      week,
+      entries: sorted,
+      keyEntries,
+      totalCount: weekEntries.length,
+      keyCount: keyEntries.length,
+    });
   }
 
   return result;
@@ -127,11 +146,13 @@ function ChangeItem({
   const config = typeConfig[entry.type] || { icon: "📌", label: entry.type, color: "#64748b", priority: 99 };
   const isNewItem = entry.type === "new_item";
   const hasUrl = showUrl && !!entry.sourceUrl;
+  const isKeyEntry = entry.isKey;
 
   const body = (
     <>
       <div className="change-row-inner">
         {isPrimary && isLatest && isNewItem && <span className="new-badge">NEW</span>}
+        {isKeyEntry && <span className="key-badge">🔥 重点</span>}
         <span
           className="change-type-badge"
           style={{ background: config.color + "18", color: config.color }}
@@ -148,7 +169,7 @@ function ChangeItem({
     </>
   );
 
-  if (isPrimary && hasUrl) {
+  if (hasUrl) {
     return (
       <a
         className={`change-item-link ${hasChildren ? "has-children" : ""}`}
@@ -174,6 +195,8 @@ function TargetGroup({
   const [expanded, setExpanded] = useState(false);
   const { primary, children, target } = aggregated;
   const hasChildren = children.length > 0;
+  const needsCollapse = children.length > 3;
+  const visibleChildren = needsCollapse && !expanded ? children.slice(0, 2) : children;
 
   return (
     <div className={`target-group ${hasChildren ? "has-sub" : ""} ${isLatestWeek && primary.type === "new_item" ? "is-new-target" : ""}`}>
@@ -196,9 +219,9 @@ function TargetGroup({
           hasChildren={hasChildren}
           showUrl
         />
-        {expanded && hasChildren && (
+        {visibleChildren.length > 0 && (
           <ul className="sub-entries">
-            {children.map((child, idx) => (
+            {visibleChildren.map((child, idx) => (
               <li key={idx}>
                 <ChangeItem
                   entry={child}
@@ -209,6 +232,11 @@ function TargetGroup({
               </li>
             ))}
           </ul>
+        )}
+        {needsCollapse && !expanded && (
+          <button className="expand-more-btn" onClick={() => setExpanded(true)}>
+            展开查看 {children.length - 2} 条
+          </button>
         )}
       </div>
     </div>
@@ -304,7 +332,14 @@ export default function ChangelogPage() {
             <div key={week.week} className="changelog-week">
               <h3 className="week-header">
                 <span className="week-date">{week.week}</span>
-                <span className="week-count">{week.entries.length} 个竞品 · {week.totalCount} 条变更</span>
+                <span className="week-count">
+                  {week.entries.length} 个竞品 · {week.totalCount} 条变更
+                  {week.keyCount > 0 && (
+                    <span className="week-key-summary">
+                      ，其中 <strong>{week.keyCount}</strong> 条为重点动态
+                    </span>
+                  )}
+                </span>
               </h3>
               <div className="week-targets">
                 {week.entries.map((agg) => (

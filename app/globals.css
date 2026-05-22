@@ -1407,6 +1407,149 @@ ul {
   align-self: center;
 }
 
+/* ===== 本周更新 - 新结构 ===== */
+.this-week-summary-bar {
+  font-size: 13px;
+  color: var(--text);
+  padding: 10px 14px;
+  background: #f0f4ff;
+  border-radius: 8px;
+  border: 1px solid rgba(36, 87, 255, 0.1);
+  margin-bottom: 4px;
+}
+
+.this-week-key {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.this-week-key-header {
+  font-size: 15px;
+  color: var(--ink);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #fef3c7;
+}
+
+.this-week-key-item {
+  display: block;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.this-week-key-item:hover {
+  border-color: #f59e0b;
+  background: #fef3c7;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15);
+}
+
+.this-week-key-item-inner {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.this-week-key-icon {
+  flex: 0 0 28px;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+}
+
+.this-week-key-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.this-week-key-target-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.this-week-key-target {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.this-week-key-date {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.this-week-key-summary {
+  display: block;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.this-week-key-link-arrow {
+  flex: 0 0 auto;
+  font-size: 16px;
+  color: var(--blue);
+  opacity: 0.5;
+  align-self: center;
+  transition: opacity 160ms ease;
+}
+
+.this-week-key-item:hover .this-week-key-link-arrow {
+  opacity: 1;
+}
+
+.this-week-others-header {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.this-week-other-link-arrow {
+  flex: 0 0 auto;
+  font-size: 14px;
+  color: var(--blue);
+  opacity: 0;
+  align-self: center;
+  transition: opacity 160ms ease;
+}
+
+.this-week-other:hover .this-week-other-link-arrow {
+  opacity: 0.6;
+}
+
+.this-week-expand-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  background: transparent;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.this-week-expand-btn:hover {
+  background: #f8faff;
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
 /* ===== 可点击的 history / changelog 项 ===== */
 .history-item.is-clickable {
   cursor: pointer;
