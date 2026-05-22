@@ -15,7 +15,7 @@ const typeConfig: Record<ChangeType, { icon: string; label: string; color: strin
   screenshot_updated: { icon: "📸", label: "截图更新", color: "#ec4899" },
 };
 
-// Group changelog by week
+// Group changelog by week, also track which week is latest for highlighting
 function groupByWeek(entries: ChangeEntry[]) {
   const weeks = new Map<string, ChangeEntry[]>();
   // Reverse to show newest first
@@ -29,11 +29,34 @@ function groupByWeek(entries: ChangeEntry[]) {
   return weeks;
 }
 
-function ChangeBadge({ entry }: { entry: ChangeEntry }) {
-  const config = typeConfig[entry.type] || { icon: "📌", label: entry.type, color: "#64748b" };
+// Get the latest week key from an array of entries
+function getLatestWeek(entries: ChangeEntry[]): string {
+  let latest = "";
+  for (const e of entries) {
+    if (!latest || e.timestamp > getWeekTimestamp(latest)) {
+      latest = e.week;
+    }
+  }
+  return latest;
+}
 
-  return (
-    <li className="change-item">
+function getWeekTimestamp(week: string): number {
+  // Parse "2026-05 W20" -> approximate timestamp
+  const parts = week.split(" ");
+  if (parts.length < 2) return 0;
+  const [year, month] = parts[0].split("-").map(Number);
+  const weekNum = parseInt(parts[1].replace("W", ""));
+  return new Date(year, month - 1, 1 + (weekNum - 1) * 7).getTime();
+}
+
+function ChangeBadge({ entry, isLatest, isOld }: { entry: ChangeEntry; isLatest: boolean; isOld: boolean }) {
+  const config = typeConfig[entry.type] || { icon: "📌", label: entry.type, color: "#64748b" };
+  const isNewItem = entry.type === "new_item";
+  const hasUrl = !!entry.sourceUrl;
+
+  const body = (
+    <>
+      {isNewItem && isLatest && <span className="new-badge">NEW</span>}
       <span className="change-icon" style={{ background: config.color + "18", color: config.color }}>
         {config.icon}
       </span>
@@ -41,6 +64,22 @@ function ChangeBadge({ entry }: { entry: ChangeEntry }) {
         <span className="change-target">{entry.target}</span>
         <span className="change-summary">{entry.summary}</span>
       </div>
+    </>
+  );
+
+  return (
+    <li className={`change-item ${hasUrl ? "is-clickable" : ""} ${isNewItem && isLatest ? "is-new" : ""} ${isNewItem && isOld ? "is-old-new" : ""}`}>
+      {hasUrl ? (
+        <a
+          className="change-item-link"
+          href={entry.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={`点击跳转到原始链接`}
+        >
+          {body}
+        </a>
+      ) : body}
     </li>
   );
 }
@@ -61,6 +100,17 @@ export default function ChangelogPage() {
   }, [filterType, filterTarget]);
 
   const weeks = groupByWeek(filtered);
+  const latestWeek = getLatestWeek(changelog);
+  // Collect targets that were new in previous weeks (for dimming)
+  const previousNewTargets = useMemo(() => {
+    const targets = new Set<string>();
+    for (const e of changelog) {
+      if (e.type === "new_item" && e.week !== latestWeek) {
+        targets.add(e.target);
+      }
+    }
+    return targets;
+  }, [latestWeek]);
 
   // All unique targets for filter
   const allTargets = useMemo(() => {
@@ -140,7 +190,12 @@ export default function ChangelogPage() {
               </h3>
               <ul className="week-entries">
                 {entries.map((entry, idx) => (
-                  <ChangeBadge key={`${entry.week}-${idx}`} entry={entry} />
+                  <ChangeBadge 
+                    key={`${entry.week}-${idx}`} 
+                    entry={entry}
+                    isLatest={entry.week === latestWeek}
+                    isOld={previousNewTargets.has(entry.target)}
+                  />
                 ))}
               </ul>
             </div>

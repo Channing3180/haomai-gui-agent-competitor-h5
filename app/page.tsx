@@ -305,6 +305,84 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== 本周更新 ===== */}
+      <section className="section this-week-section">
+        <div className="matrix-head">
+          <div>
+            <span>This Week</span>
+            <h2>本周更新</h2>
+          </div>
+          <a className="btn btn-ghost" href="/changelog">
+            查看全部 →
+          </a>
+        </div>
+        {(() => {
+          const latestWeek = changelog.length > 0 ? changelog[0].week : "";
+          const thisWeek = changelog.filter(e => e.week === latestWeek);
+          const signals = thisWeek.filter(e => e.type === "new_signal").slice(0, 3);
+          const others = thisWeek.filter(e => e.type !== "new_signal").slice(0, 5);
+
+          if (thisWeek.length === 0) {
+            return <div className="this-week-empty">本周暂无更新</div>;
+          }
+
+          const typeIcon: Record<string, string> = {
+            stars_change: "⭐", code_update: "🔵", new_signal: "🟣",
+            activity_update: "📝", pricing_change: "🟠", new_item: "🟢", screenshot_updated: "📸",
+          };
+
+          return (
+            <div className="this-week-grid">
+              {signals.length > 0 && (
+                <div className="this-week-signals">
+                  <h3>📰 行业动态（{signals.length} 条）</h3>
+                  {signals.map((entry, i) => (
+                    <a
+                      key={`signal-${i}`}
+                      className="this-week-signal"
+                      href={entry.sourceUrl || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => {
+                        if (!entry.sourceUrl) { e.preventDefault(); }
+                      }}
+                    >
+                      <span className="this-week-signal-target">{entry.target}</span>
+                      <p className="this-week-signal-summary">{entry.summary}</p>
+                      <span className="this-week-signal-date">{entry.date}</span>
+                    </a>
+                  ))}
+                </div>
+              )}
+              {others.length > 0 && (
+                <div className="this-week-others">
+                  <h3>🔍 其他动态（{others.length} 条）</h3>
+                  {others.map((entry, i) => (
+                    <a
+                      key={`other-${i}`}
+                      className="this-week-other"
+                      href={entry.sourceUrl || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => {
+                        if (!entry.sourceUrl) { e.preventDefault(); }
+                      }}
+                    >
+                      <span className="this-week-other-icon">{typeIcon[entry.type] || "📌"}</span>
+                      <div className="this-week-other-body">
+                        <span className="this-week-other-target">{entry.target}</span>
+                        <span className="this-week-other-summary">{entry.summary}</span>
+                      </div>
+                      <span className="this-week-other-date">{entry.date}</span>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })()}
+      </section>
+
       <section className="section matrix-section">
         <div className="matrix-head">
           <div>
@@ -850,16 +928,38 @@ export default function Home() {
             return Array.from(byWeek.entries()).map(([week, entries]) => (
               <div key={week} className="history-week">
                 <div className="history-week-label">{week}</div>
-                {entries.map((entry, i) => (
-                  <div key={i} className="history-item">
-                    <span className="history-icon">{typeIcon[entry.type] || "📌"}</span>
-                    <div className="history-content">
-                      <span className="history-target">{entry.target}</span>
-                      <span className="history-summary">{entry.summary}</span>
+                {entries.map((entry, i) => {
+                  const hasUrl = !!entry.sourceUrl;
+                  return (
+                    <div key={i} className={`history-item ${hasUrl ? "is-clickable" : ""}`}>
+                      {hasUrl ? (
+                        <a
+                          className="history-item-link"
+                          href={entry.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={`点击跳转到 ${entry.sourceUrl}`}
+                        >
+                          <span className="history-icon">{typeIcon[entry.type] || "📌"}</span>
+                          <div className="history-content">
+                            <span className="history-target">{entry.target}</span>
+                            <span className="history-summary">{entry.summary}</span>
+                          </div>
+                          <span className="history-date">{entry.date}</span>
+                        </a>
+                      ) : (
+                        <>
+                          <span className="history-icon">{typeIcon[entry.type] || "📌"}</span>
+                          <div className="history-content">
+                            <span className="history-target">{entry.target}</span>
+                            <span className="history-summary">{entry.summary}</span>
+                          </div>
+                          <span className="history-date">{entry.date}</span>
+                        </>
+                      )}
                     </div>
-                    <span className="history-date">{entry.date}</span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             ));
           })()}
