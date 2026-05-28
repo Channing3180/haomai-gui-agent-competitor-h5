@@ -16,445 +16,703 @@ export interface ChangeEntry {
   week: string;
   date: string;
   timestamp: number;
-  sourceUrl?: string;
-  /** 标记是否本周重点（每周挑 3~4 条最有信息量的） */
-  isKey?: boolean;
 }
 
 export const changelog: ChangeEntry[] = [
-  // ===== W21 (2026-05-19 ~ 05-22) — 本周重点：4 个 repo 有重要更新 =====
   {
-    type: "code_update",
-    target: "Cua",
-    summary: "Anthropics/cua 5-14 提交，新增多模态视觉 grounding 能力，支持跨平台 GUI 操作",
-    week: "2026-05 W21",
-    date: "2026-05-14",
-    timestamp: 1778860899,
-    sourceUrl: "https://github.com/anthropics/cua",
-    isKey: true,
+    "type": "code_update",
+    "target": "UI-TARS Desktop",
+    "summary": "UI-TARS Desktop 有新的代码提交 (2026-04-29)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755580
   },
   {
-    type: "code_update",
-    target: "Browser Use",
-    summary: "browser-use/browser-use 5-15 提交，浏览器自动化框架新增 agent 编排和视觉定位能力",
-    week: "2026-05 W21",
-    date: "2026-05-15",
-    timestamp: 1778860939,
-    sourceUrl: "https://github.com/browser-use/browser-use",
-    isKey: true,
+    "type": "code_update",
+    "target": "UI-TARS",
+    "summary": "UI-TARS 有新的代码提交 (2026-01-27)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755584
   },
   {
-    type: "code_update",
-    target: "MobiAgent",
-    summary: "sail-sg/MobiAgent 5-15 提交，移动端 GUI 导航模型新增多步任务分解和屏幕理解能力",
-    week: "2026-05 W21",
-    date: "2026-05-15",
-    timestamp: 1778860929,
-    sourceUrl: "https://github.com/sail-sg/MobiAgent",
-    isKey: true,
+    "type": "code_update",
+    "target": "OpenCUA",
+    "summary": "OpenCUA 有新的代码提交 (2026-02-04)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755611
   },
   {
-    type: "code_update",
-    target: "Autofish",
-    summary: "memohai/Autofish 5-12 提交，跨应用自动化框架新增无障碍服务优化和意图识别模块",
-    week: "2026-05 W21",
-    date: "2026-05-12",
-    timestamp: 1778860924,
-    sourceUrl: "https://github.com/qiaoshoupeng/Autofish",
-    isKey: true,
-  },
-  // 其余 code_update — 常规维护，折叠展示
-  {
-    type: "code_update",
-    target: "UI-TARS Desktop",
-    summary: "bytedance/UI-TARS-desktop 5-15 提交，桌面端 GUI Agent 持续迭代",
-    week: "2026-05 W21",
-    date: "2026-05-15",
-    timestamp: 1778860874,
-    sourceUrl: "https://github.com/bytedance/UI-TARS-desktop",
+    "type": "code_update",
+    "target": "GELab-Zero / STEP-GUI",
+    "summary": "GELab-Zero / STEP-GUI 有新的代码提交 (2026-05-11)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755660
   },
   {
-    type: "code_update",
-    target: "UI-TARS",
-    summary: "bytedance/ui-tars 5-15 更新，基础模型层持续优化",
-    week: "2026-05 W21",
-    date: "2026-05-15",
-    timestamp: 1778860877,
-    sourceUrl: "https://github.com/bytedance/ui-tars",
+    "type": "code_update",
+    "target": "Cua",
+    "summary": "Cua 有新的代码提交 (2026-05-14)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755667
   },
   {
-    type: "code_update",
-    target: "OpenCUA",
-    summary: "OpenBMB/OpenCUA 5-13 提交，手机端 GUI 操控模型持续维护",
-    week: "2026-05 W21",
-    date: "2026-05-13",
-    timestamp: 1778860881,
-    sourceUrl: "https://github.com/OpenBMB/OpenCUA",
+    "type": "code_update",
+    "target": "Agent-S",
+    "summary": "Agent-S 有新的代码提交 (2026-05-13)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755670
   },
   {
-    type: "code_update",
-    target: "GELab-Zero / STEP-GUI",
-    summary: "GELab-Zero/STEP-GUI 5-11 提交，GUI 交互理解模型持续更新",
-    week: "2026-05 W21",
-    date: "2026-05-11",
-    timestamp: 1778860897,
-    sourceUrl: "https://github.com/GELab-Zero/STEP-GUI",
+    "type": "code_update",
+    "target": "AndroidWorld",
+    "summary": "AndroidWorld 有新的代码提交 (2026-04-09)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755673
   },
   {
-    type: "code_update",
-    target: "Agent-S",
-    summary: "SalesforceAIResearch/Agent-S 5-13 提交，多模态 Agent 持续开发",
-    week: "2026-05 W21",
-    date: "2026-05-13",
-    timestamp: 1778860906,
-    sourceUrl: "https://github.com/SalesforceAIResearch/Agent-S",
+    "type": "code_update",
+    "target": "ShowUI",
+    "summary": "ShowUI 有新的代码提交 (2026-04-24)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755676
   },
   {
-    type: "code_update",
-    target: "AndroidWorld",
-    summary: "google/android_world 4-09 提交，Android 仿真环境持续维护",
-    week: "2026-05 W21",
-    date: "2026-05-15",
-    timestamp: 1778860909,
-    sourceUrl: "https://github.com/google/android_world",
+    "type": "code_update",
+    "target": "CogAgent",
+    "summary": "CogAgent 有新的代码提交 (2025-04-04)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755681
   },
   {
-    type: "code_update",
-    target: "ShowUI",
-    summary: "showlab/ShowUI 4-24 提交，视觉 UI 理解模型持续更新",
-    week: "2026-05 W21",
-    date: "2026-05-15",
-    timestamp: 1778860911,
-    sourceUrl: "https://github.com/showlab/ShowUI",
+    "type": "code_update",
+    "target": "Browser Use",
+    "summary": "Browser Use 有新的代码提交 (2026-05-13)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755684
   },
   {
-    type: "code_update",
-    target: "CogAgent",
-    summary: "THUDM/CogAgent 4-04 提交，清华 CogAgent 视觉 Agent 模型持续维护",
-    week: "2026-05 W21",
-    date: "2026-05-15",
-    timestamp: 1778860916,
-    sourceUrl: "https://github.com/THUDM/CogAgent",
+    "type": "code_update",
+    "target": "Mobilerun",
+    "summary": "Mobilerun 有新的代码提交 (2026-05-13)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755701
   },
   {
-    type: "code_update",
-    target: "AppAgentX",
-    summary: "mnotgod96/AppAgent 4-15 提交，AppAgent 系列模型持续更新",
-    week: "2026-05 W21",
-    date: "2026-05-15",
-    timestamp: 1778860917,
-    sourceUrl: "https://github.com/mnotgod96/AppAgent",
+    "type": "code_update",
+    "target": "Open-AutoGLM",
+    "summary": "Open-AutoGLM 有新的代码提交 (2026-03-06)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755712
   },
   {
-    type: "code_update",
-    target: "UI-Voyager",
-    summary: "microsoft/UI-Voyager 4-03 提交，微软跨应用导航 Agent 持续维护",
-    week: "2026-05 W21",
-    date: "2026-05-11",
-    timestamp: 1778860921,
-    sourceUrl: "https://github.com/microsoft/UI-Voyager",
+    "type": "code_update",
+    "target": "AppAgentX",
+    "summary": "AppAgentX 有新的代码提交 (2025-04-15)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755717
   },
   {
-    type: "code_update",
-    target: "Mobile-Agent",
-    summary: "X-PLUG/MobileAgent 5-14 提交，移动端多模态 Agent 持续迭代",
-    week: "2026-05 W21",
-    date: "2026-05-14",
-    timestamp: 1778860937,
-    sourceUrl: "https://github.com/X-PLUG/MobileAgent",
+    "type": "code_update",
+    "target": "Autofish",
+    "summary": "Autofish 有新的代码提交 (2026-05-12)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755725
   },
   {
-    type: "code_update",
-    target: "Mobilerun",
-    summary: "nicepkg/mobilerun 5-14 提交，移动端自动化框架持续更新",
-    week: "2026-05 W21",
-    date: "2026-05-14",
-    timestamp: 1778860945,
-    sourceUrl: "https://github.com/nicepkg/mobilerun",
+    "type": "code_update",
+    "target": "Mobile-Agent",
+    "summary": "Mobile-Agent 有新的代码提交 (2026-05-14)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755730
   },
   {
-    type: "code_update",
-    target: "Open-AutoGLM",
-    summary: "THUDM/AutoGLM 3-06 提交，智谱 AutoGLM 手机端 Agent 持续维护",
-    week: "2026-05 W21",
-    date: "2026-05-14",
-    timestamp: 1778860947,
-    sourceUrl: "https://github.com/THUDM/AutoGLM",
+    "type": "new_signal",
+    "target": "豆包手机助手 / nubia M153",
+    "summary": "手机新浪网",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755762
   },
   {
-    type: "code_update",
-    target: "AgentCPM-GUI",
-    summary: "OpenBMB/AgentCPM-GUI 1-11 提交，CPM 系列 GUI Agent 持续维护",
-    week: "2026-05 W21",
-    date: "2026-05-15",
-    timestamp: 1778861015,
-    sourceUrl: "https://github.com/OpenBMB/AgentCPM-GUI",
-  },
-
-  // ===== W20 (2026-05-12 ~ 05-18) — 本周重点：国产手机 AI Agent 集中升级 =====
-  {
-    type: "new_signal",
-    target: "豆包手机助手 / nubia M153",
-    summary: "字节跳动豆包手机助手正式登陆 nubia M153 工程样机，支持自然语言操控手机、跨应用自动化操作，多轮语音交互和屏幕感知能力",
-    week: "2026-05 W20",
-    date: "2026-05-15",
-    timestamp: 1778833332,
-    sourceUrl: "https://www.donews.com/a/detail/20260515-douban-phone-assistant",
-    isKey: true,
+    "type": "new_signal",
+    "target": "豆包手机助手 / nubia M153",
+    "summary": "品玩",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755762
   },
   {
-    type: "new_signal",
-    target: "华为小艺",
-    summary: "华为小艺智能体在 HarmonyOS 上实现深度集成，支持跨应用任务编排、多轮对话与复杂任务执行、全局语音操控",
-    week: "2026-05 W20",
-    date: "2026-05-15",
-    timestamp: 1778833332,
-    sourceUrl: "https://news.mydrivers.com/1/2026-05-15/huawei-xiaoyi-ai.htm",
-    isKey: true,
+    "type": "new_signal",
+    "target": "荣耀 YOYO 智能体",
+    "summary": "热点科技",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755776
   },
   {
-    type: "new_signal",
-    target: "Apple Intelligence / Siri App Intents",
-    summary: "Apple 公布 Siri App Intents 新框架，支持第三方应用深度集成，开发者可自定义智能体行为",
-    week: "2026-05 W20",
-    date: "2026-05-15",
-    timestamp: 1778833332,
-    sourceUrl: "https://www.ifanr.com/2026-05-15/apple-intelligence-siri-app-intents",
-    isKey: true,
+    "type": "new_signal",
+    "target": "荣耀 YOYO 智能体",
+    "summary": "新华网",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755776
   },
   {
-    type: "new_signal",
-    target: "OPPO 小布助手",
-    summary: "OPPO 小布助手大语言模型版本发布，支持智能体创建与分享、智能日程管理和多模态搜索",
-    week: "2026-05 W20",
-    date: "2026-05-15",
-    timestamp: 1778833332,
-    sourceUrl: "https://www.pingwest.com/a/20260515-oppo-xiaobu-update",
+    "type": "new_signal",
+    "target": "OPPO 小布助手",
+    "summary": "OPPO",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755795
   },
   {
-    type: "new_signal",
-    target: "荣耀 YOYO 智能体",
-    summary: "荣耀 YOYO 智能体能力升级，支持跨设备任务协同、主动服务、复杂任务分解与执行",
-    week: "2026-05 W20",
-    date: "2026-05-15",
-    timestamp: 1778833332,
-    sourceUrl: "https://eu.36kr.com/p/20260515-honor-yoyo-intelligent-agent",
+    "type": "new_signal",
+    "target": "OPPO 小布助手",
+    "summary": "全天候科技",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778755795
   },
   {
-    type: "new_signal",
-    target: "小米超级小爱",
-    summary: "小米超级小爱接入大模型，支持自然对话、手机自动化操控、多设备联动和场景自动化",
-    week: "2026-05 W20",
-    date: "2026-05-15",
-    timestamp: 1778833332,
-    sourceUrl: "https://finance.sina.com.cn/tech/2026-05-15/xiaomi-xiaoai-assistant.shtml",
+    "type": "code_update",
+    "target": "UI-TARS Desktop",
+    "summary": "UI-TARS Desktop 有新的代码提交 (2026-04-29)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792512
   },
   {
-    type: "new_signal",
-    target: "vivo 蓝心小 V",
-    summary: "vivo 蓝心小 V 大模型升级，新增图像理解、智能体交互、场景感知和主动建议能力",
-    week: "2026-05 W20",
-    date: "2026-05-15",
-    timestamp: 1778833332,
-    sourceUrl: "https://www.geekpark.net/news/2026-05-15-vivo-blueheart-xiaov",
+    "type": "code_update",
+    "target": "UI-TARS",
+    "summary": "UI-TARS 有新的代码提交 (2026-01-27)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792518
   },
   {
-    type: "new_signal",
-    target: "Google Gemini / Samsung Galaxy AI",
-    summary: "Google Gemini 与三星 Galaxy AI 深度合作，推出新一代手机智能助手，支持跨设备智能协同",
-    week: "2026-05 W20",
-    date: "2026-05-15",
-    timestamp: 1778833332,
-    sourceUrl: "https://www.geekpark.net/news/2026-05-15-google-gemini-samsung-galaxy-ai",
-  },
-  // stars_change 条目保留但非重点
-  {
-    type: "stars_change",
-    target: "UI-TARS Desktop",
-    summary: "UI-TARS Desktop Stars 33.9k+ → 34.0k+",
-    week: "2026-05 W20",
-    date: "2026-05-15",
-    timestamp: 1778833332,
-    sourceUrl: "https://github.com/bytedance/UI-TARS-desktop",
+    "type": "code_update",
+    "target": "OpenCUA",
+    "summary": "OpenCUA 有新的代码提交 (2026-02-04)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792520
   },
   {
-    type: "stars_change",
-    target: "AndroidWorld",
-    summary: "AndroidWorld Stars 766+ → 767+",
-    week: "2026-05 W20",
-    date: "2026-05-15",
-    timestamp: 1778833332,
-    sourceUrl: "https://github.com/google/android_world",
+    "type": "code_update",
+    "target": "AgentCPM-GUI",
+    "summary": "AgentCPM-GUI 有新的代码提交 (2026-01-11)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792522
   },
   {
-    type: "stars_change",
-    target: "Browser Use",
-    summary: "Browser Use Stars 93.9k+ → 94.0k+",
-    week: "2026-05 W20",
-    date: "2026-05-15",
-    timestamp: 1778833332,
-    sourceUrl: "https://github.com/browser-use/browser-use",
+    "type": "code_update",
+    "target": "GELab-Zero / STEP-GUI",
+    "summary": "GELab-Zero / STEP-GUI 有新的代码提交 (2026-05-11)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792526
   },
   {
-    type: "stars_change",
-    target: "UI-Voyager",
-    summary: "UI-Voyager Stars 60+ → 68+",
-    week: "2026-05 W20",
-    date: "2026-05-15",
-    timestamp: 1778833332,
-    sourceUrl: "https://github.com/microsoft/UI-Voyager",
+    "type": "code_update",
+    "target": "Cua",
+    "summary": "Cua 有新的代码提交 (2026-05-14)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792529
   },
   {
-    type: "stars_change",
-    target: "Autofish",
-    summary: "Autofish Stars 103+ → 104+",
-    week: "2026-05 W20",
-    date: "2026-05-15",
-    timestamp: 1778833332,
-    sourceUrl: "https://github.com/qiaoshoupeng/Autofish",
+    "type": "code_update",
+    "target": "Agent-S",
+    "summary": "Agent-S 有新的代码提交 (2026-05-13)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792531
   },
-{
+  {
+    "type": "code_update",
+    "target": "AndroidWorld",
+    "summary": "AndroidWorld 有新的代码提交 (2026-04-09)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792532
+  },
+  {
+    "type": "code_update",
+    "target": "ShowUI",
+    "summary": "ShowUI 有新的代码提交 (2026-04-24)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792535
+  },
+  {
+    "type": "code_update",
+    "target": "CogAgent",
+    "summary": "CogAgent 有新的代码提交 (2025-04-04)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792538
+  },
+  {
+    "type": "code_update",
+    "target": "Browser Use",
+    "summary": "Browser Use 有新的代码提交 (2026-05-13)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792540
+  },
+  {
+    "type": "code_update",
+    "target": "Mobilerun",
+    "summary": "Mobilerun 有新的代码提交 (2026-05-13)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792542
+  },
+  {
+    "type": "code_update",
+    "target": "Open-AutoGLM",
+    "summary": "Open-AutoGLM 有新的代码提交 (2026-03-06)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792544
+  },
+  {
+    "type": "code_update",
+    "target": "AppAgentX",
+    "summary": "AppAgentX 有新的代码提交 (2025-04-15)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792546
+  },
+  {
+    "type": "code_update",
+    "target": "Autofish",
+    "summary": "Autofish 有新的代码提交 (2026-05-12)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792548
+  },
+  {
+    "type": "code_update",
+    "target": "Mobile-Agent",
+    "summary": "Mobile-Agent 有新的代码提交 (2026-05-14)",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792549
+  },
+  {
+    "type": "new_signal",
+    "target": "豆包手机助手 / nubia M153",
+    "summary": "手机新浪网",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792559
+  },
+  {
+    "type": "new_signal",
+    "target": "豆包手机助手 / nubia M153",
+    "summary": "品玩",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792559
+  },
+  {
+    "type": "new_signal",
+    "target": "荣耀 YOYO 智能体",
+    "summary": "热点科技",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792561
+  },
+  {
+    "type": "new_signal",
+    "target": "荣耀 YOYO 智能体",
+    "summary": "新华网",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792561
+  },
+  {
+    "type": "new_signal",
+    "target": "OPPO 小布助手",
+    "summary": "OPPO",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792572
+  },
+  {
+    "type": "new_signal",
+    "target": "OPPO 小布助手",
+    "summary": "全天候科技",
+    "week": "2026-05 W20",
+    "date": "2026-05-14",
+    "timestamp": 1778792572
+  },
+  {
     "type": "code_update",
     "target": "UI-TARS Desktop",
     "summary": "UI-TARS Desktop 有新的代码提交 (2026-05-18)",
     "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465619
-},
-{
+    "date": "2026-05-21",
+    "timestamp": 1779397280
+  },
+  {
     "type": "code_update",
     "target": "UI-TARS",
     "summary": "UI-TARS 有新的代码提交 (2026-01-27)",
     "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465620
-},
-{
+    "date": "2026-05-21",
+    "timestamp": 1779397281
+  },
+  {
     "type": "code_update",
     "target": "OpenCUA",
     "summary": "OpenCUA 有新的代码提交 (2026-02-04)",
     "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465622
-},
-{
+    "date": "2026-05-21",
+    "timestamp": 1779397283
+  },
+  {
     "type": "code_update",
     "target": "AgentCPM-GUI",
     "summary": "AgentCPM-GUI 有新的代码提交 (2026-01-11)",
     "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465623
-},
-{
+    "date": "2026-05-21",
+    "timestamp": 1779397285
+  },
+  {
     "type": "code_update",
     "target": "GELab-Zero / STEP-GUI",
     "summary": "GELab-Zero / STEP-GUI 有新的代码提交 (2026-05-11)",
     "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465624
-},
-{
+    "date": "2026-05-21",
+    "timestamp": 1779397287
+  },
+  {
     "type": "code_update",
     "target": "Cua",
     "summary": "Cua 有新的代码提交 (2026-05-21)",
     "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465626
-},
-{
+    "date": "2026-05-21",
+    "timestamp": 1779397289
+  },
+  {
     "type": "code_update",
     "target": "Agent-S",
     "summary": "Agent-S 有新的代码提交 (2026-05-13)",
     "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465628
-},
-{
+    "date": "2026-05-21",
+    "timestamp": 1779397290
+  },
+  {
     "type": "code_update",
     "target": "AndroidWorld",
     "summary": "AndroidWorld 有新的代码提交 (2026-04-09)",
     "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465629
-},
-{
+    "date": "2026-05-21",
+    "timestamp": 1779397292
+  },
+  {
     "type": "code_update",
     "target": "ShowUI",
     "summary": "ShowUI 有新的代码提交 (2026-04-24)",
     "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465630
-},
-{
+    "date": "2026-05-21",
+    "timestamp": 1779397294
+  },
+  {
     "type": "code_update",
     "target": "CogAgent",
     "summary": "CogAgent 有新的代码提交 (2025-04-04)",
     "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465632
-},
-{
-    "type": "code_update",
-    "target": "AppAgentX",
-    "summary": "AppAgentX 有新的代码提交 (2025-04-15)",
-    "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465633
-},
-{
-    "type": "code_update",
-    "target": "UI-Voyager",
-    "summary": "UI-Voyager 有新的代码提交 (2026-04-03)",
-    "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465636
-},
-{
-    "type": "code_update",
-    "target": "Autofish",
-    "summary": "Autofish 有新的代码提交 (2026-05-17)",
-    "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465637
-},
-{
-    "type": "code_update",
-    "target": "MobiAgent",
-    "summary": "MobiAgent 有新的代码提交 (2026-05-22)",
-    "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465639
-},
-{
-    "type": "code_update",
-    "target": "Mobile-Agent",
-    "summary": "Mobile-Agent 有新的代码提交 (2026-05-14)",
-    "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465640
-},
-{
+    "date": "2026-05-21",
+    "timestamp": 1779397296
+  },
+  {
     "type": "code_update",
     "target": "Browser Use",
     "summary": "Browser Use 有新的代码提交 (2026-05-21)",
     "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465641
-},
-{
+    "date": "2026-05-21",
+    "timestamp": 1779397298
+  },
+  {
     "type": "code_update",
     "target": "Mobilerun",
-    "summary": "Mobilerun 有新的代码提交 (2026-05-21)",
+    "summary": "Mobilerun 有新的代码提交 (2026-05-20)",
     "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465643
-},
-{
+    "date": "2026-05-21",
+    "timestamp": 1779397299
+  },
+  {
     "type": "code_update",
     "target": "Open-AutoGLM",
     "summary": "Open-AutoGLM 有新的代码提交 (2026-03-06)",
     "week": "2026-05 W21",
-    "date": "2026-05-22",
-    "timestamp": 1779465645
-},
+    "date": "2026-05-21",
+    "timestamp": 1779397301
+  },
+  {
+    "type": "code_update",
+    "target": "AppAgentX",
+    "summary": "AppAgentX 有新的代码提交 (2025-04-15)",
+    "week": "2026-05 W21",
+    "date": "2026-05-21",
+    "timestamp": 1779397303
+  },
+  {
+    "type": "code_update",
+    "target": "Autofish",
+    "summary": "Autofish 有新的代码提交 (2026-05-17)",
+    "week": "2026-05 W21",
+    "date": "2026-05-21",
+    "timestamp": 1779397305
+  },
+  {
+    "type": "code_update",
+    "target": "Mobile-Agent",
+    "summary": "Mobile-Agent 有新的代码提交 (2026-05-14)",
+    "week": "2026-05 W21",
+    "date": "2026-05-21",
+    "timestamp": 1779397306
+  },
+  {
+    "type": "new_signal",
+    "target": "豆包手机助手 / nubia M153",
+    "summary": "新浪财经",
+    "week": "2026-05 W21",
+    "date": "2026-05-21",
+    "timestamp": 1779397308
+  },
+  {
+    "type": "new_signal",
+    "target": "豆包手机助手 / nubia M153",
+    "summary": "17173",
+    "week": "2026-05 W21",
+    "date": "2026-05-21",
+    "timestamp": 1779397308
+  },
+  {
+    "type": "new_signal",
+    "target": "荣耀 YOYO 智能体",
+    "summary": "新华网",
+    "week": "2026-05 W21",
+    "date": "2026-05-21",
+    "timestamp": 1779397310
+  },
+  {
+    "type": "new_signal",
+    "target": "荣耀 YOYO 智能体",
+    "summary": "热点科技",
+    "week": "2026-05 W21",
+    "date": "2026-05-21",
+    "timestamp": 1779397310
+  },
+  {
+    "type": "new_signal",
+    "target": "OPPO 小布助手",
+    "summary": "OPPO",
+    "week": "2026-05 W21",
+    "date": "2026-05-21",
+    "timestamp": 1779397312
+  },
+  {
+    "type": "new_signal",
+    "target": "OPPO 小布助手",
+    "summary": "Sina finance",
+    "week": "2026-05 W21",
+    "date": "2026-05-21",
+    "timestamp": 1779397312
+  },
+  {
+    "type": "code_update",
+    "target": "UI-TARS Desktop",
+    "summary": "UI-TARS Desktop 有新的代码提交 (2026-05-18)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002057
+  },
+  {
+    "type": "code_update",
+    "target": "UI-TARS",
+    "summary": "UI-TARS 有新的代码提交 (2026-01-27)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002059
+  },
+  {
+    "type": "code_update",
+    "target": "OpenCUA",
+    "summary": "OpenCUA 有新的代码提交 (2026-05-25)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002060
+  },
+  {
+    "type": "code_update",
+    "target": "AgentCPM-GUI",
+    "summary": "AgentCPM-GUI 有新的代码提交 (2026-01-11)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002062
+  },
+  {
+    "type": "code_update",
+    "target": "GELab-Zero / STEP-GUI",
+    "summary": "GELab-Zero / STEP-GUI 有新的代码提交 (2026-05-11)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002063
+  },
+  {
+    "type": "code_update",
+    "target": "Cua",
+    "summary": "Cua 有新的代码提交 (2026-05-28)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002064
+  },
+  {
+    "type": "code_update",
+    "target": "Agent-S",
+    "summary": "Agent-S 有新的代码提交 (2026-05-13)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002066
+  },
+  {
+    "type": "code_update",
+    "target": "AndroidWorld",
+    "summary": "AndroidWorld 有新的代码提交 (2026-04-09)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002067
+  },
+  {
+    "type": "code_update",
+    "target": "ShowUI",
+    "summary": "ShowUI 有新的代码提交 (2026-04-24)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002069
+  },
+  {
+    "type": "code_update",
+    "target": "CogAgent",
+    "summary": "CogAgent 有新的代码提交 (2025-04-04)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002071
+  },
+  {
+    "type": "code_update",
+    "target": "Browser Use",
+    "summary": "Browser Use 有新的代码提交 (2026-05-26)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002072
+  },
+  {
+    "type": "code_update",
+    "target": "Mobilerun",
+    "summary": "Mobilerun 有新的代码提交 (2026-05-27)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002074
+  },
+  {
+    "type": "code_update",
+    "target": "Open-AutoGLM",
+    "summary": "Open-AutoGLM 有新的代码提交 (2026-03-06)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002075
+  },
+  {
+    "type": "code_update",
+    "target": "AppAgentX",
+    "summary": "AppAgentX 有新的代码提交 (2025-04-15)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002077
+  },
+  {
+    "type": "code_update",
+    "target": "Autofish",
+    "summary": "Autofish 有新的代码提交 (2026-05-28)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002078
+  },
+  {
+    "type": "code_update",
+    "target": "Mobile-Agent",
+    "summary": "Mobile-Agent 有新的代码提交 (2026-05-14)",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002080
+  },
+  {
+    "type": "new_signal",
+    "target": "豆包手机助手 / nubia M153",
+    "summary": "品玩",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002082
+  },
+  {
+    "type": "new_signal",
+    "target": "豆包手机助手 / nubia M153",
+    "summary": "新华网",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002082
+  },
+  {
+    "type": "new_signal",
+    "target": "荣耀 YOYO 智能体",
+    "summary": "新华网",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002083
+  },
+  {
+    "type": "new_signal",
+    "target": "荣耀 YOYO 智能体",
+    "summary": "人民日报",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002083
+  },
+  {
+    "type": "new_signal",
+    "target": "OPPO 小布助手",
+    "summary": "新浪财经",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002085
+  },
+  {
+    "type": "new_signal",
+    "target": "OPPO 小布助手",
+    "summary": "OPPO",
+    "week": "2026-05 W22",
+    "date": "2026-05-28",
+    "timestamp": 1780002085
+  }
 ];
